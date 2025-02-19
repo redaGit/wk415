@@ -13,13 +13,3 @@ Please contact [**Reda Laichi**](https://www.linkedin.com/in/reda-l-5b28292) or 
 5. [Container registry](30-registry/README.md)
 6. [Packet capture](40-packet-capture/README.md)
 7. [Bonus](45-streaming-telemetry/README.md)
-
----
-<div align=center>
-<a href="https://codespaces.new/srlinuxamericas/n93-clab?quickstart=1">
-<img src="https://gitlab.com/rdodin/pics/-/wikis/uploads/d78a6f9f6869b3ac3c286928dd52fa08/run_in_codespaces-v1.svg?sanitize=true" style="width:50%"/></a>
-
-**[Run](https://codespaces.new/srlinuxamericas/n93-clab?quickstart=1) this lab in GitHub Codespaces for free**.  
-[Learn more](https://containerlab.dev/manual/codespaces/) about Containerlab for Codespaces.
-
-</div>
