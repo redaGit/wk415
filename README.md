@@ -25,17 +25,7 @@ A Nokia team member will provide you with a card that contains:
 > <p style="color:red">!!! Make sure to backup any code, config, ... <u> offline (e.g on your laptop)</u>. 
 > The VM instances will be destroyed once the Workshop is concluded.</p>
 
----
-<div align=center>
-<a href="https://codespaces.new/srlinuxamericas/N92-evpn?quickstart=1">
-<img src="https://gitlab.com/rdodin/pics/-/wikis/uploads/d78a6f9f6869b3ac3c286928dd52fa08/run_in_codespaces-v1.svg?sanitize=true" style="width:50%"/></a>
 
-**[Run](https://codespaces.new/srlinuxamericas/N92-evpn?quickstart=1) this lab in GitHub Codespaces for free**.  
-[Learn more](https://containerlab.dev/manual/codespaces/) about Containerlab for Codespaces.
-
-</div>
-
----
 
 ## Workshop
 The objective of the hands on section of this workshop is the following:
