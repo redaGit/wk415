@@ -10,6 +10,12 @@ Shortcut links to major sections in this README:
 
 |   |   |
 |---|---|
+|[Containerlab Introduction](05-install/README.md)
+| 1-[Containerlab Installation](05-install/README.md) guide
+| 2- [Quickstart lab](10-basics/README.md)
+| 3- [Startup config](15-startup/README.md)
+| 4- [VM-based nodes](20-vm/README.md)
+| 5- [Packet capture](40-packet-capture/README.md)
 | [Lab Topology](#lab-topology) | [Deploying the lab](#deploying-the-lab) |
 | [BGP Underay](#configure-bgp-underlay) | [BGP Overlay](#configure-bgp-for-overlay) |
 | [Layer 2 EPVN](#configure-l2-evpn-vxlan) | [Layer 3 EVPN](#configure-layer-3-evpn-vxlan) |
