@@ -1,4 +1,4 @@
-# Welcome to the EVPN Workshop at NANOG 92
+# Welcome to the EVPN Containerlab Workshop 
 
 This README is your starting point into the hands on section.
 
