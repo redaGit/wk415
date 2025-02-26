@@ -8,8 +8,8 @@ Pre-requisite: A laptop with SSH client
 
 Shortcut links to major sections in this README:
 
-|   |   |
-|---|---|
+|   |
+|---|
 |[Containerlab Introduction](05-install/README.md)
 | 1-[Containerlab Installation](05-install/README.md) guide
 | 2- [Quickstart lab](10-basics/README.md)
@@ -21,8 +21,10 @@ Shortcut links to major sections in this README:
 | 2-  [Deploying the lab](#deploying-the-lab)
 | 3- [BGP Underay](#configure-bgp-underlay) 
 | 4- [BGP Overlay](#configure-bgp-for-overlay)
-| [Layer 2 EPVN](#configure-l2-evpn-vxlan) | [Layer 3 EVPN](#configure-layer-3-evpn-vxlan) |
-| [CLI Quick Reference](#sr-linux-configuration-mode) | [Bonus](#bonus---interconnecting-layer-2-and-layer-3-using-irb) |
+| 5- [Layer 2 EPVN](#configure-l2-evpn-vxlan) 
+| 6- [Layer 3 EVPN](#configure-layer-3-evpn-vxlan) 
+| 6- [CLI Quick Reference](#sr-linux-configuration-mode) 
+| 7- [Bonus](#bonus---interconnecting-layer-2-and-layer-3-using-irb)
 
 ## Lab Environment
 
