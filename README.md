@@ -16,8 +16,11 @@ Shortcut links to major sections in this README:
 | 3- [Startup config](15-startup/README.md)
 | 4- [VM-based nodes](20-vm/README.md)
 | 5- [Packet capture](40-packet-capture/README.md)
-| [Lab Topology](#lab-topology) | [Deploying the lab](#deploying-the-lab) |
-| [BGP Underay](#configure-bgp-underlay) | [BGP Overlay](#configure-bgp-for-overlay) |
+|[Deploying DC Leaf & Spine Fabric]
+| 1- [Lab Topology](#lab-topology) 
+| 2-  [Deploying the lab](#deploying-the-lab)
+| 3- [BGP Underay](#configure-bgp-underlay) 
+| 4- [BGP Overlay](#configure-bgp-for-overlay)
 | [Layer 2 EPVN](#configure-l2-evpn-vxlan) | [Layer 3 EVPN](#configure-layer-3-evpn-vxlan) |
 | [CLI Quick Reference](#sr-linux-configuration-mode) | [Bonus](#bonus---interconnecting-layer-2-and-layer-3-using-irb) |
 
