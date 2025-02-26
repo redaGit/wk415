@@ -10,8 +10,8 @@ Shortcut links to major sections in this README:
 
 |   |
 |---|
-|[Containerlab Introduction](05-install/README.md)
-| 1-[Containerlab Installation](05-install/README.md) guide
+|[Containerlab Introduction]
+| 1-[Containerlab Installation](05-install/README.md)
 | 2- [Quickstart lab](10-basics/README.md)
 | 3- [Startup config](15-startup/README.md)
 | 4- [VM-based nodes](20-vm/README.md)
