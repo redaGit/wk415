@@ -11,11 +11,11 @@ Shortcut links to major sections in this README:
 |   |
 |---|
 |  Containerlab Introduction
-| 1-[Containerlab Installation](05-install/README.md)
-| 2- [Quickstart lab](10-basics/README.md)
-| 3- [Startup config](15-startup/README.md)
-| 4- [VM-based nodes](20-vm/README.md)
-| 5- [Packet capture](40-packet-capture/README.md)
+|  -[Containerlab Installation- Module 05](05-install/README.md)
+|  - [Basics- Module 10](10-basics/README.md)
+|  - [Startup config - Module 15](15-startup/README.md)
+|  - [VM-based nodes- Module 20](20-vm/README.md)
+|  - [Packet capture- Mlldule 40](40-packet-capture/README.md)
 | Deploying DC Leaf & Spine Fabric
 | 1- [Lab Topology](#lab-topology) 
 | 2-  [Deploying the lab](#deploying-the-lab)
