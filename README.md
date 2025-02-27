@@ -40,7 +40,7 @@ Shortcut links to major sections in this README:
 |  - [Packet capture- Mlldule 40](40-packet-capture/README.md)
 | Deploying DC Leaf & Spine Fabric
 | 1- [Lab Topology](#lab-topology) 
-| 2-  [Deploying the lab](#deploying-the-lab)
+| 2- [Deploying the lab](#deploying-the-lab)
 | 3- [BGP Underay](#configure-bgp-underlay) 
 | 4- [BGP Overlay](#configure-bgp-for-overlay)
 | 5- [Layer 2 EPVN](#configure-l2-evpn-vxlan) 
@@ -48,23 +48,6 @@ Shortcut links to major sections in this README:
 | 6- [CLI Quick Reference](#sr-linux-configuration-mode) 
 | 7- [Bonus](#bonus---interconnecting-layer-2-and-layer-3-using-irb)
 
-## Lab Environment
-
-A Nokia team member will provide you with a card that contains:
-- your VM hostname
-- SSH credentials to the VM instance
-- URL of this repo
-
-> <p style="color:red">!!! Make sure to backup any code, config, ... <u> offline (e.g on your laptop)</u>. 
-> The VM instances will be destroyed once the Workshop is concluded.</p>
-
-
-
-## Workshop
-The objective of the hands on section of this workshop is the following:
-- Build a DC fabric with leaf and spine
-- Build Layer 2 EVPN-VXLAN
-- Build Layer 3 EVPN-VXLAN
 
 ## Lab Topology
 
