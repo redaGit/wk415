@@ -30,13 +30,16 @@ REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
 vrnetlab/nokia_sros           24.7.R1   553e94475c12   7 seconds ago   889MB
 ```
 
+## Building JUNOS OS container image
+
+
 ## Deploying the VM-based nodes lab
 
 With the sros image built, we can proceed with the lab deployment. We will deploy a multi-node lab with SR OS, SR Linux and Cisco XRd images. Containerlab makes it possible to have a VM based docker node and a native docker node in the same lab.
 
 This is how the topology looks like:
 
-![image](vm-topology.jpg)
+![../image](vm-topology.jpg)
 
 The end goal of this topology is establish connectivity between the 2 clients.
 
