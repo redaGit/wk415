@@ -35,18 +35,12 @@ vrnetlab/nokia_sros           24.7.R1   553e94475c12   7 seconds ago   889MB
 
 ## Deploying the VM-based nodes lab
 
-With the sros image built, we can proceed with the lab deployment. We will deploy a multi-node lab with SR OS, SR Linux and Cisco XRd images. Containerlab makes it possible to have a VM based docker node and a native docker node in the same lab.
-
-This is how the topology looks like:
-
-![../image](vm-topology.jpg)
-
-The end goal of this topology is establish connectivity between the 2 clients.
+With the sros and junos image built, we can proceed with the lab deployment. We will deploy a lab with sros, junos and SR Linux to show that Containerlab can have a VM based docker node and a native docker node in the same lab.
 
 First, let's switch back to the lab directory:
 
 ```bash
-cd ~/i2-clab/20-vm
+cd ~/ac2-clab/20-vm
 ```
 
 Now lets deploy the lab:
@@ -55,39 +49,18 @@ Now lets deploy the lab:
 sudo clab dep -c
 ```
 
-The deployment will wait for the SR OS nodes to boot up.
-
-At the end of the deployment, the following table will be displayed. Wait for the sros boot to be completed (see next section), before trying to login to sros.
+At the end of the deployment, the following table will be displayed. Wait for the sonic boot to be completed (see next section), before trying to login to sonic.
 
 ```bash
-╭─────────┬───────────────────────────────────────────────────────────┬─────────┬───────────────────╮
-│   Name  │                         Kind/Image                        │  State  │   IPv4/6 Address  │
-├─────────┼───────────────────────────────────────────────────────────┼─────────┼───────────────────┤
-│ client1 │ linux                                                     │ running │ 172.20.20.8       │
-│         │ ghcr.io/srl-labs/network-multitool                        │         │ 3fff:172:20:20::8 │
-├─────────┼───────────────────────────────────────────────────────────┼─────────┼───────────────────┤
-│ client2 │ linux                                                     │ running │ 172.20.20.9       │
-│         │ ghcr.io/srl-labs/network-multitool                        │         │ 3fff:172:20:20::9 │
-├─────────┼───────────────────────────────────────────────────────────┼─────────┼───────────────────┤
-│ p1-sr1  │ nokia_sros                                                │ running │ 172.20.20.4       │
-│         │ vr-sros:24.7.R1                                           │         │ 3fff:172:20:20::4 │
-├─────────┼───────────────────────────────────────────────────────────┼─────────┼───────────────────┤
-│ p2-sr1  │ nokia_sros                                                │ running │ 172.20.20.6       │
-│         │ vr-sros:24.7.R1                                           │         │ 3fff:172:20:20::6 │
-├─────────┼───────────────────────────────────────────────────────────┼─────────┼───────────────────┤
-│ p3-sr1  │ nokia_sros                                                │ running │ 172.20.20.5       │
-│         │ vr-sros:24.7.R1                                           │         │ 3fff:172:20:20::5 │
-├─────────┼───────────────────────────────────────────────────────────┼─────────┼───────────────────┤
-│ p4-xrd  │ cisco_xrd                                                 │ running │ 172.20.20.3       │
-│         │ registry-i2.srexperts.net/library/xrd-control-plane:7.8.1 │         │ 3fff:172:20:20::3 │
-├─────────┼───────────────────────────────────────────────────────────┼─────────┼───────────────────┤
-│ pe1-sr1 │ nokia_sros                                                │ running │ 172.20.20.7       │
-│         │ vr-sros:24.7.R1                                           │         │ 3fff:172:20:20::7 │
-├─────────┼───────────────────────────────────────────────────────────┼─────────┼───────────────────┤
-│ pe2-srL │ nokia_srlinux                                             │ running │ 172.20.20.2       │
-│         │ ghcr.io/nokia/srlinux:24.10.1                             │         │ 3fff:172:20:20::2 │
-╰─────────┴───────────────────────────────────────────────────────────┴─────────┴───────────────────╯
++---+---------------+--------------+--------------------------------+---------------+---------+----------------+----------------------+
+| # |     Name      | Container ID |             Image              |     Kind      |  State  |  IPv4 Address  |     IPv6 Address     |
++---+---------------+--------------+--------------------------------+---------------+---------+----------------+----------------------+
+| 1 | clab-vm-sonic | c865295f6b4e | vrnetlab/sonic_sonic-vs:202405 | sonic-vm      | running | 172.20.20.3/24 | 3fff:172:20:20::3/64 |
+| 2 | clab-vm-srl   | 51b41a280f84 | ghcr.io/nokia/srlinux          | nokia_srlinux | running | 172.20.20.2/24 | 3fff:172:20:20::2/64 |
++---+---------------+--------------+--------------------------------+---------------+---------+----------------+----------------------+
 ```
+
+
 
 ### Monitoring the boot process
 
