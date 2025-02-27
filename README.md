@@ -6,6 +6,28 @@ Please contact [**Reda Laichi**](https://www.linkedin.com/in/reda-l-5b28292) or 
 
 Pre-requisite: A laptop with SSH client
 
+
+## Lab Environment
+
+A Nokia team member will provide you with a card that contains:
+- your VM hostname
+- SSH credentials to the VM instance
+- URL of this repo
+
+> <p style="color:red">!!! Make sure to backup any code, config, ... <u> offline (e.g on your laptop)</u>. 
+> The VM instances will be destroyed once the Workshop is concluded.</p>
+
+
+
+## Workshop
+The objective of the hands on section of this workshop is the following:
+- Understand containerlab 
+- Using containerlab to deploy and virtual networks
+- Build a DC fabric with leaf and spine
+- Build Layer 2 EVPN-VXLAN
+- Build Layer 3 EVPN-VXLAN
+
+
 Shortcut links to major sections in this README:
 
 |   |
