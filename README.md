@@ -39,7 +39,7 @@ Shortcut links to major sections in this README:
 |  - [VM-based nodes- Module 20](20-vm/README.md)
 |  - [Packet capture- Mlldule 40](40-packet-capture/README.md)
 | Deploying DC Leaf & Spine Fabric
-| 1- [Lab Topology](lab-topology/README.md) 
+| 1- [Lab Topology](evpn/README.md/#lab-topology/README.md) 
 | 2- [Deploying the lab](#deploying-the-lab)
 | 3- [BGP Underay](#configure-bgp-underlay) 
 | 4- [BGP Overlay](#configure-bgp-for-overlay)
