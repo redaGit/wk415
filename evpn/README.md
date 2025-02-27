@@ -2,7 +2,7 @@
 
 Each workshop participant will be provided with the below topology consisting of 2 leaf and 1 spine nodes along with 4 clients.
 
-![image](images/lab-topology.jpg)
+![image](../images/lab-topology.jpg)
 
 ## NOS (Network Operating System)
 
