@@ -123,11 +123,11 @@ show interface
 
 ### IPv4 Link Addressing
 
-![image](images/lab-ipv4-2.jpg)
+![image](../images/lab-ipv4-2.jpg)
 
 ### IPv6 Link Addressing
 
-![image](images/lab-ipv6.jpg)
+![image](../images/lab-ipv6.jpg)
 
 ### Verify reachability between devices
 
@@ -196,7 +196,7 @@ We will export the system loopback IP over BGP to other nodes. This is required 
 
 The export policies are already created as part of the startup config. The routing policy config can be seen using the `info /routing-policy` command. In this step, we will apply them to BGP.
 
-![image](images/bgp-underlay.jpg)
+![image](../images/bgp-underlay.jpg)
 
 ### BGP Underlay Configuration
 
@@ -358,7 +358,7 @@ For establishing overlay BGP session between Leaf1 and Leaf2, we will use the sy
 
 BGP overlay configuration is not required on the Spine as Spine is not aware of EVPN routes.
 
-![image](images/bgp-overlay.jpg)
+![image](../images/bgp-overlay.jpg)
 
 ### BGP Overlay Configuration
 
@@ -438,7 +438,7 @@ The objective is to establish a connection between Client 1 (connected to Leaf1)
 
 Both the clients are in the same subnet (172.16.10.0/24) and therefore, this will be a Layer 2 connection. From a client perspective, it is just like they are connected to a Layer 2 switch.
 
-![image](images/l2-evpn.jpg)
+![image](../images/l2-evpn.jpg)
 
 ### Configure Client Interface
 
@@ -724,7 +724,7 @@ Our final step is to configure a Layer 3 EVPN-VXLAN.
 
 The objective is to connect Client 2 and Client 4 over a Layer 3 EVPN.
 
-![image](images/l3-evpn.jpg)
+![image](../images/l3-evpn.jpg)
 
 ### Configure Client Interface
 
@@ -913,7 +913,7 @@ Typical use case is when there is a mix of Layer 2 and Layer 3 devices within th
 
 We will use an IRB (Integrated Routing and Bridging) to inter-connect Layer 2 ( mac-vrf) and Layer 3 (ip-vrf).
 
-![image](images/bonus-irb.jpg)
+![image](../images/bonus-irb.jpg)
 
 ### IRB Configuration
 
