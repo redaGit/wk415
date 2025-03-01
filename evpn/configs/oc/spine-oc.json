@@ -1,0 +1,254 @@
+{
+  "interfaces": {
+    "interface": [
+      {
+        "name": "ethernet-1/1",
+        "config": {
+          "name": "ethernet-1/1",
+          "type": "ethernetCsmacd",
+          "description": "To-Leaf1",
+          "enabled": true
+        },
+        "subinterfaces": {
+          "subinterface": [
+            {
+              "index": 0,
+              "config": {
+                "index": 0
+              },
+              "ipv4": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "192.168.10.3",
+                      "config": {
+                        "ip": "192.168.10.3",
+                        "prefix-length": 31
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              },
+              "ipv6": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "192:168:10::3",
+                      "config": {
+                        "ip": "192:168:10::3",
+                        "prefix-length": 127
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "ethernet-1/2",
+        "config": {
+          "name": "ethernet-1/2",
+          "type": "ethernetCsmacd",
+          "description": "To-Leaf2",
+          "enabled": true
+        },
+        "subinterfaces": {
+          "subinterface": [
+            {
+              "index": 0,
+              "config": {
+                "index": 0
+              },
+              "ipv4": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "192.168.20.3",
+                      "config": {
+                        "ip": "192.168.20.3",
+                        "prefix-length": 31
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              },
+              "ipv6": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "192:168:20::3",
+                      "config": {
+                        "ip": "192:168:20::3",
+                        "prefix-length": 127
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "system0",
+        "config": {
+          "name": "system0",
+          "type": "softwareLoopback"
+        },
+        "subinterfaces": {
+          "subinterface": [
+            {
+              "index": 0,
+              "config": {
+                "index": 0
+              },
+              "ipv4": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "3.3.3.3",
+                      "config": {
+                        "ip": "3.3.3.3",
+                        "prefix-length": 32
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              },
+              "ipv6": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "2001::3",
+                      "config": {
+                        "ip": "2001::3",
+                        "prefix-length": 128
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "routing-policy": {
+    "policy-definitions": {
+      "policy-definition": [
+        {
+          "name": "export-all",
+          "config": {
+            "name": "export-all"
+          },
+          "statements": {
+            "statement": [
+              {
+                "name": "all-routes",
+                "config": {
+                  "name": "all-routes"
+                },
+                "actions": {
+                  "config": {
+                    "policy-result": "ACCEPT_ROUTE"
+                  }
+                }
+              },
+              {
+                "name": "all-direct",
+                "config": {
+                  "name": "all-direct"
+                },
+                "conditions": {
+                  "config": {
+                    "install-protocol-eq": "DIRECTLY_CONNECTED"
+                  }
+                },
+                "actions": {
+                  "config": {
+                    "policy-result": "ACCEPT_ROUTE"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "import-all",
+          "config": {
+            "name": "import-all"
+          },
+          "statements": {
+            "statement": [
+              {
+                "name": "all-routes",
+                "config": {
+                  "name": "all-routes"
+                },
+                "actions": {
+                  "config": {
+                    "policy-result": "ACCEPT_ROUTE"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "network-instances": {
+    "network-instance": [
+      {
+        "name": "default",
+        "config": {
+          "name": "default",
+          "type": "DEFAULT_INSTANCE"
+        },
+        "interfaces": {
+          "interface": [
+            {
+              "id": "ethernet-1/1.0",
+              "config": {
+                "id": "ethernet-1/1.0"
+              }
+            },
+            {
+              "id": "ethernet-1/2.0",
+              "config": {
+                "id": "ethernet-1/2.0"
+              }
+            },
+            {
+              "id": "system0.0",
+              "config": {
+                "id": "system0.0"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
