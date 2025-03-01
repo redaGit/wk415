@@ -1,0 +1,347 @@
+{
+  "interfaces": {
+    "interface": [
+      {
+        "name": "ethernet-1/1",
+        "config": {
+          "name": "ethernet-1/1",
+          "type": "ethernetCsmacd",
+          "description": "To-Spine",
+          "enabled": true
+        },
+        "subinterfaces": {
+          "subinterface": [
+            {
+              "index": 0,
+              "config": {
+                "index": 0
+              },
+              "ipv4": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "192.168.10.2",
+                      "config": {
+                        "ip": "192.168.10.2",
+                        "prefix-length": 31
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              },
+              "ipv6": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "192:168:10::2",
+                      "config": {
+                        "ip": "192:168:10::2",
+                        "prefix-length": 127
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "ethernet-1/10",
+        "config": {
+          "name": "ethernet-1/10",
+          "type": "ethernetCsmacd",
+          "description": "To-Client1",
+          "enabled": true
+        },
+        "subinterfaces": {
+          "subinterface": [
+            {
+              "index": 0,
+              "config": {
+                "index": 0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "ethernet-1/11",
+        "config": {
+          "name": "ethernet-1/11",
+          "type": "ethernetCsmacd",
+          "description": "To-Client2",
+          "enabled": true
+        },
+        "subinterfaces": {
+          "subinterface": [
+            {
+              "index": 0,
+              "config": {
+                "index": 0
+              },
+              "ipv4": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "10.80.1.2",
+                      "config": {
+                        "ip": "10.80.1.2",
+                        "prefix-length": 24
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              },
+              "ipv6": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "10:80:1::2",
+                      "config": {
+                        "ip": "10:80:1::2",
+                        "prefix-length": 64
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "irb1",
+        "config": {
+          "name": "irb1",
+          "type": "ipForward",
+          "enabled": true
+        },
+        "subinterfaces": {
+          "subinterface": [
+            {
+              "index": 100,
+              "config": {
+                "index": 100
+              },
+              "ipv4": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "172.16.10.254",
+                      "config": {
+                        "ip": "172.16.10.254",
+                        "prefix-length": 24
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "system0",
+        "config": {
+          "name": "system0",
+          "type": "softwareLoopback"
+        },
+        "subinterfaces": {
+          "subinterface": [
+            {
+              "index": 0,
+              "config": {
+                "index": 0
+              },
+              "ipv4": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "1.1.1.1",
+                      "config": {
+                        "ip": "1.1.1.1",
+                        "prefix-length": 32
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              },
+              "ipv6": {
+                "addresses": {
+                  "address": [
+                    {
+                      "ip": "2001::1",
+                      "config": {
+                        "ip": "2001::1",
+                        "prefix-length": 128
+                      }
+                    }
+                  ]
+                },
+                "config": {
+                  "enabled": true
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+    "routing-policy": {
+    "defined-sets": {
+      "prefix-sets": {
+        "prefix-set": [
+          {
+            "name": "underlay-v4",
+            "config": {
+              "name": "underlay-v4"
+            },
+            "prefixes": {
+              "prefix": [
+                {
+                  "ip-prefix": "0.0.0.0/0",
+                  "masklength-range": "32..32",
+                  "config": {
+                    "ip-prefix": "0.0.0.0/0",
+                    "masklength-range": "32..32"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "underlay-v6",
+            "config": {
+              "name": "underlay-v6"
+            },
+            "prefixes": {
+              "prefix": [
+                {
+                  "ip-prefix": "::/0",
+                  "masklength-range": "128..128",
+                  "config": {
+                    "ip-prefix": "::/0",
+                    "masklength-range": "128..128"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "policy-definitions": {
+      "policy-definition": [
+        {
+          "name": "export-underlay-v4",
+          "config": {
+            "name": "export-underlay-v4"
+          },
+          "statements": {
+            "statement": [
+              {
+                "name": "local",
+                "config": {
+                  "name": "local"
+                },
+                "conditions": {
+                  "config": {
+                    "install-protocol-eq": "DIRECTLY_CONNECTED"
+                  },
+                  "match-prefix-set": {
+                    "config": {
+                      "prefix-set": "underlay-v4"
+                    }
+                  }
+                },
+                "actions": {
+                  "config": {
+                    "policy-result": "ACCEPT_ROUTE"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "export-underlay-v6",
+          "config": {
+            "name": "export-underlay-v6"
+          },
+          "statements": {
+            "statement": [
+              {
+                "name": "local",
+                "config": {
+                  "name": "local"
+                },
+                "conditions": {
+                  "config": {
+                    "install-protocol-eq": "DIRECTLY_CONNECTED"
+                  },
+                  "match-prefix-set": {
+                    "config": {
+                      "prefix-set": "underlay-v6"
+                    }
+                  }
+                },
+                "actions": {
+                  "config": {
+                    "policy-result": "ACCEPT_ROUTE"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+    "network-instances": {
+    "network-instance": [
+      {
+        "name": "default",
+        "config": {
+          "name": "default",
+          "type": "DEFAULT_INSTANCE"
+        },
+        "interfaces": {
+          "interface": [
+            {
+              "id": "ethernet-1/1.0",
+              "config": {
+                "id": "ethernet-1/1.0"
+              }
+            },
+            {
+              "id": "system0.0",
+              "config": {
+                "id": "system0.0"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
