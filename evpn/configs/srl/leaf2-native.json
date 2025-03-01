@@ -1,0 +1,13 @@
+{
+  "interface": [
+    {
+      "name": "ethernet-1/10",
+      "subinterface": [
+        {
+          "index": 0,
+          "type": "bridged"
+        }
+      ]
+    }
+  ]
+}
