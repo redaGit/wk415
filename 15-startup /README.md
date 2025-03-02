@@ -1,6 +1,6 @@
 # Startup configuration
 
-This exercise demonstrates how to provide startup configuration to the lab nodes by means of the [`startup-config`](https://containerlab.dev/manual/nodes/#startup-config) node parameter in the topology file.
+This exercise demonstrates how to provide startup configuration.
 
 Startup configuration is a way to provide initial configuration to the lab nodes when they boot up. This is useful when you want to automate the configuration of the nodes and avoid manual intervention. It also brings your lab to a desired state when you need to test a specific scenario.
 
@@ -69,3 +69,5 @@ ping network-instance default 10.10.10.2
 You should see a successful ping response.
 
 You have successfully deployed the lab with the nodes equipped with the startup configuration. This is a powerful feature that can be used to provision the nodes with the desired configuration when they boot up.
+
+For more details please visit  [`startup-config`](https://containerlab.dev/manual/nodes/#startup-config)
