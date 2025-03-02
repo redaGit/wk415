@@ -76,12 +76,8 @@ sudo clab inspect --all
 
 Find the nodename or IP address of the device from the above output and then use SSH.
 
-Username: `admin`
-
-Password: will be provided
-
 ```bash
-ssh admin@leaf1
+ssh leaf1
 ```
 
 To login to the client, identify the client hostname using the `sudo clab inspect --all` command above and then:
