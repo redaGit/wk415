@@ -7,7 +7,7 @@ Startup configuration is a way to provide initial configuration to the lab nodes
 To enter the lab directory, run the following command from anywhere in your terminal:
 
 ```bash
-cd ~/cw-clab/15-startup/
+cd ~/cwrk/15-startup/
 ```
 
 We start by deploying a lab defined in the [startup.clab.yml](startup.clab.yml) topology file. The lab consists of two nodes: `srl` (Nokia SR Linux) and `ceos` (Arista cEOS). Both nodes are configured with a startup configuration file that resides in the same directory as the topology file.
