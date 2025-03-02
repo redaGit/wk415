@@ -30,7 +30,26 @@ REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
 vrnetlab/nokia_sros           24.7.R1   553e94475c12   7 seconds ago   889MB
 ```
 
-## Building JUNOS OS container image
+## Building JUNOS OS container image -- Saju
+
+Junos VM image is located at `~/images/sros-vm-24.7.R1.qcow2` on your VM and should be copied to the `~/vrnetlab/sros/` directory before building the container image.
+
+```bash
+cp ~/images/sros-vm-24.7.R1.qcow2 ~/vrnetlab/sros/
+```
+
+Once copied, we can enter in the `~/vrnetlab/sros` image and build the container image:
+
+```bash
+cd ~/vrnetlab/sros && make
+```
+
+The resulting image will be tagged as `vrnetlab/nokia_sros:24.7.R1`. This can be verified using `docker images` command.
+
+```bash
+REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
+vrnetlab/nokia_sros           24.7.R1   553e94475c12   7 seconds ago   889MB
+```
 
 
 ## Deploying the VM-based nodes lab
@@ -40,7 +59,7 @@ With the sros and junos image built, we can proceed with the lab deployment. We 
 First, let's switch back to the lab directory:
 
 ```bash
-cd ~/ac2-clab/20-vm
+cd ~/cwrk/20-vm
 ```
 
 Now lets deploy the lab:
