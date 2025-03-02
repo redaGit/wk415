@@ -30,27 +30,28 @@ REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
 vrnetlab/nokia_sros           24.7.R1   553e94475c12   7 seconds ago   889MB
 ```
 
-## Building JUNOS OS container image -- Saju
+## JUNOS OS container image
 
-Junos VM image is located at `~/images/sros-vm-24.7.R1.qcow2` on your VM and should be copied to the `~/vrnetlab/sros/` directory before building the container image.
+Junos VM docker image is already prepared and is located at `~/images/vr-vmx.tar.gz` on your VM.
 
-```bash
-cp ~/images/sros-vm-24.7.R1.qcow2 ~/vrnetlab/sros/
+Import this image into docker.
+
+```
+docker load -i ~/images/vr-vmx.tar.gz
 ```
 
-Once copied, we can enter in the `~/vrnetlab/sros` image and build the container image:
+Check local docker image repo and verify that the vmx image is present.
 
-```bash
-cd ~/vrnetlab/sros && make
+```
+docker images
 ```
 
-The resulting image will be tagged as `vrnetlab/nokia_sros:24.7.R1`. This can be verified using `docker images` command.
+Expected output:
 
-```bash
-REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
-vrnetlab/nokia_sros           24.7.R1   553e94475c12   7 seconds ago   889MB
 ```
-
+REPOSITORY                                       TAG         IMAGE ID       CREATED         SIZE
+registry.srlinux.dev/pub/vr-vmx                  bb          877650904adc   2 years ago     10.6GB
+```
 
 ## Deploying the VM-based nodes lab
 
