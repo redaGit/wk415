@@ -7,14 +7,14 @@ This workshop section introduces you to containerlab basics - topology file, ima
 Clone this repository to your workshop VM:
 
 ```bash
-cd ~ && git clone https://github.com/srlinuxamericas/ac2-clab.git \
-&& cd ac2-clab/10-basics
-```
+cd ~ && git clone https://github.com/redaGit/cwrk.git \
+&& cd cwrk/10-basics
+``` 
 
-The repo should be cloned and you should be in the `ac2-clab` directory as per the output below:
+The repo should be cloned and you should be in the `cwrk` directory as per the output below:
 
 ```
-autoconuser@2:~/ac2-clab/10-basics$ 
+autoconuser@2:~/cwrk/10-basics$ 
 ```
 
 ## Topology
@@ -189,7 +189,7 @@ INFO[0000] Parsing & checking topology file: basic.clab.yml
 If the topology file is located in a different directory, you can specify the path to the topology file:
 
 ```bash
-sudo clab inspect -t ~/ac2-clab/10-basics/
+sudo clab inspect -t ~/cwrk/10-basics/
 INFO[0000] Parsing & checking topology file: basic.clab.yml
 +---+-----------------+--------------+-----------------------+---------------+---------+----------------+----------------------+
 | # |      Name       | Container ID |         Image         |     Kind      |  State  |  IPv4 Address  |     IPv6 Address     |
