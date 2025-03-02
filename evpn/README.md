@@ -78,7 +78,7 @@ Find the nodename or IP address of the device from the above output and then use
 
 Username: `admin`
 
-Password: Refer to the provided card
+Password: will be provided
 
 ```bash
 ssh admin@leaf1
