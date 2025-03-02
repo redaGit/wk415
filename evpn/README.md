@@ -6,9 +6,7 @@ Each workshop participant will be provided with the below topology consisting of
 
 ## NOS (Network Operating System)
 
-Both leafs and Spine nodes will be running the latest Nokia [SR Linux](https://www.nokia.com/networks/ip-networks/service-router-linux-NOS/) release 24.7.2.
-
-All 4 clients will be running [Alpine Linux](https://alpinelinux.org/)
+Both leafs and Spine nodes will be running the latest Nokia [SR Linux](https://www.nokia.com/networks/ip-networks/service-router-linux-NOS/) release 24.10.1.
 
 ## Deploying the lab
 
@@ -94,26 +92,41 @@ sudo docker exec –it client3 sh
 
 ## Physical link connectivity
 
-When the lab is deployed with the default startup config, all the links are created with IPv4 and IPv6 addresses.
-
-This allows to start configuring the protocols right away.
-
-Here's a summary of what is included in the startup config:
+We will be using [Openconfig](https://www.openconfig.net/) to configure the following:
 
 - Configure interfaces between Leaf & Spine
 - Configure interface between Leaf & Client
 - Configure system loopback
 - Configure route policy to advertise system loopback (this policy will be later applied under BGP)
 - Configure default Network Instance (VRF) and add system loopback and Leaf/Spine interfaces to this VRF
-- Configure IPs and static routes on Clients
 
-Check the [startup config](n92-evpn-lab/configs/fabric/startup) files to see how these objects are configured in SR Linux.
+We will use [gRPC gNMI](https://www.openconfig.net/docs/gnmi/gnmi-specification/) to push the configuration to the devices.
+
+[gNMIc](https://gnmic.openconfig.net/) is the most widely used client for gNMI and we will use that for this purpose.
+
+The Openconfig configuration files are located at [configs/oc/](./configs/oc). Any config that is missing in OC will be implemented using SR Linux models. For our use case, we will use SRL models to configure the client facing interfaces on the leafs as a `bridged` interface.
+
+Before we start, verify the current configured interfaces.
 
 To view Interface status on SR Linux use:
 
 ```srl
 show interface
 ```
+
+Only the management interface is configured.
+
+Change to the `OC Running` mode and view the interface configuration in OC.
+
+```
+enter oc
+```
+
+```
+info flat interfaces
+```
+
+The management interface configuration can be seen in OC format.
 
 ### IPv4 Link Addressing
 
@@ -123,9 +136,49 @@ show interface
 
 ![image](../images/lab-ipv6.jpg)
 
+### Using gNMI to push Openconfig
+
+Run the following commands to push the configuration in the files to the devices. There is no native configuration for spine as all required configs are covered in Openconfig.
+
+```
+gnmic -a leaf1:57401 -u admin -p NokiaSrl1! --insecure set --update-path openconfig:/ --update-file configs/oc/leaf1-oc.json --update-path srl_nokia:/ --update-file configs/srl/leaf1-native.json --encoding=JSON_IETF
+
+gnmic -a leaf2:57401 -u admin -p NokiaSrl1! --insecure set --update-path openconfig:/ --update-file configs/oc/leaf2-oc.json --update-path srl_nokia:/ --update-file configs/srl/leaf2-native.json --encoding=JSON_IETF
+
+gnmic -a spine:57401 -u admin -p NokiaSrl1! --insecure set --update-path openconfig:/ --update-file configs/oc/spine-oc.json --encoding=JSON_IETF
+```
+
+Expected response from each device:
+
+```
+{
+  "source": "leaf1:57401",
+  "timestamp": 1740857162969095065,
+  "time": "2025-03-01T21:26:02.969095065+02:00",
+  "results": [
+    {
+      "operation": "UPDATE",
+      "path": "openconfig:"
+    },
+    {
+      "operation": "UPDATE",
+      "path": "srl_nokia:"
+    }
+  ]
+}
+```
+
+### Viewing configuration in OC or native
+
+The configuration that we pushed using OC can be viewed in both OC or native format.
+
+To view in OC format, enter `OC Running` mode and run `info flat interfaces`.
+
+To view in SRL format, enter `SRL Running` mode (if not already there) and run `info flat interface *`.
+
 ### Verify reachability between devices
 
-After the lab is deployed, check reachability between leaf and spine devices using ping.
+Now that the interfaces are configured, check reachability between leaf and spine devices using ping.
 
 Example on spine to Leaf1 using IPv4:
 
