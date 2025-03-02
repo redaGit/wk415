@@ -25,7 +25,7 @@ cd cwrk/evpn
 sudo clab deploy -t srl-evpn.clab.yml
 ```
 
-[Containerlab](https://containerlab.dev/) will deploy the lab and display a table with the list of nodes and their IPs.
+Containerlab will deploy the lab and display a table with the list of nodes and their IPs.
 
 ```bash
 user@1:~/cwrk/evpn$ sudo clab deploy -t srl-evpn.clab.yml
