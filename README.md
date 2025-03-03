@@ -22,7 +22,7 @@ A Nokia team member will provide you with a card that contains:
 ## Workshop
 The objective of the hands on section of this workshop is the following:
 - Understand containerlab 
-- Using containerlab to deploy and virtual networks
+- Using containerlab to deploy virtual networks and troubleshooting
 - Build a DC fabric with leaf and spine
 - Build Layer 2 EVPN-VXLAN
 - Build Layer 3 EVPN-VXLAN
