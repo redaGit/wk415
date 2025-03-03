@@ -13,6 +13,8 @@ topology:
     nokia_srlinux:
       type: ixrd2l
       image: ghcr.io/nokia/srlinux:24.10.1
+      binds:
+        - configs/custom.py:/etc/opt/srlinux/cli/plugins/custom.py
     linux:
       image: ghcr.io/srl-labs/network-multitool
   nodes:
