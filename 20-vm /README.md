@@ -95,7 +95,7 @@ At the end of the deployment, the following table will be displayed. Wait for th
 To monitor the boot process of SR OS node, you can open a new terminal and run the following command:
 
 ```bash
-sudo docker logs -f pe1-sr1
+sudo docker logs -f clab-vm-lab-sros
 ```
 
 To monitor the junox vmx boot, run:
@@ -104,7 +104,7 @@ To monitor the junox vmx boot, run:
 docker logs -f clab-vm-lab-vmx
 ```
 
-Note that vmx takes around 8mins to boot. Wait until the below line is seen in the boot logs.
+Note that vmx takes around 8 mins to boot. Wait until the below line is seen in the boot logs.
 
 ```
 2025-03-03 13:41:49,125: launch     INFO     Startup complete in: 0:08:31.546370
