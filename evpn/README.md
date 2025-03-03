@@ -1024,9 +1024,9 @@ By now, you should have an understanding of how this ping worked. If you have qu
 
 If you would like to explore all of the above without doing any manual configurations, we got you covered !
 
-Go to [Complete startup config](n92-evpn-lab/configs/fabric/startup-complete) to see the full configuration for each device.
+Go to [Complete startup config](configs/startup-complete) to see the full configuration for each device.
 
-In your topology file (srl-evpn.clab.yml), point the startup config file location to `configs/fabric/startup-complete/leaf1-startup-complete.cfg` (for Leaf1).
+In your topology file (srl-evpn.clab.yml), point the startup config file location to `configs/startup-complete/leaf1-startup-complete.cfg` (for Leaf1).
 
 Destroy any existing lab using the command `sudo clab destroy -t srl-evpn.clab.yml --cleanup`.
 
