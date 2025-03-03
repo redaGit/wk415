@@ -26,44 +26,30 @@ sudo clab deploy -t srl-evpn.clab.yml
 Containerlab will deploy the lab and display a table with the list of nodes and their IPs.
 
 ```bash
-user@1:~/cwrk/evpn$ sudo clab deploy -t srl-evpn.clab.yml
-INFO[0000] Containerlab v0.58.0 started                 
-INFO[0000] Parsing & checking topology file: srl-evpn.clab.yml
-INFO[0000] Creating docker network: Name="srl-evpn-lab-mgmt", IPv4Subnet="172.20.20.0/24", IPv6Subnet="2001:172:20:20::/64", MTU=0
-INFO[0000] Creating lab directory: /home/user/cwrk/evpn/clab-srl-evpn
-INFO[0000] Creating container: "client2"                
-INFO[0000] Creating container: "client4"                
-INFO[0000] Creating container: "leaf2"                  
-INFO[0000] Creating container: "spine"                  
-INFO[0000] Created link: leaf2:e1-2 <--> spine:e1-2     
-INFO[0000] Running postdeploy actions for Nokia SR Linux 'spine' node
-INFO[0000] Created link: client4:eth1 <--> leaf2:e1-11  
-INFO[0000] Running postdeploy actions for Nokia SR Linux 'leaf2' node
-INFO[0001] Creating container: "client3"                
-INFO[0002] Created link: client3:eth1 <--> leaf2:e1-10  
-INFO[0003] Creating container: "leaf1"                  
-INFO[0003] Created link: leaf1:e1-1 <--> spine:e1-1     
-INFO[0003] Created link: client2:eth1 <--> leaf1:e1-11  
-INFO[0003] Running postdeploy actions for Nokia SR Linux 'leaf1' node
-INFO[0005] Creating container: "client1"                
-INFO[0005] Created link: client1:eth1 <--> leaf1:e1-10  
-INFO[0027] Executed command "/root/restart-services.sh" on the node "client4". stdout:
-INFO[0027] Executed command "/root/restart-services.sh" on the node "client3". stdout:
-INFO[0027] Executed command "/root/restart-services.sh" on the node "client1". stdout:
-INFO[0027] Executed command "/root/restart-services.sh" on the node "client2". stdout:
-INFO[0027] Adding containerlab host entries to /etc/hosts file
-INFO[0027] Adding ssh config for containerlab nodes     
-+---+---------+--------------+------------------------------+---------------+---------+-----------------+-----------------------+
-| # |  Name   | Container ID |            Image             |     Kind      |  State  |  IPv4 Address   |     IPv6 Address      |
-+---+---------+--------------+------------------------------+---------------+---------+-----------------+-----------------------+
-| 1 | client1 | 8ae427b192c6 | ghcr.io/srl-labs/alpine      | linux         | running | 172.20.20.10/24 | 2001:172:20:20::10/64 |
-| 2 | client2 | bbfe0ab03441 | ghcr.io/srl-labs/alpine      | linux         | running | 172.20.20.11/24 | 2001:172:20:20::11/64 |
-| 3 | client3 | 76f0262de571 | ghcr.io/srl-labs/alpine      | linux         | running | 172.20.20.12/24 | 2001:172:20:20::12/64 |
-| 4 | client4 | 8e45ed7389c1 | ghcr.io/srl-labs/alpine      | linux         | running | 172.20.20.13/24 | 2001:172:20:20::13/64 |
-| 5 | leaf1   | 58d90a824ebb | ghcr.io/nokia/srlinux:24.7.2 | nokia_srlinux | running | 172.20.20.2/24  | 2001:172:20:20::2/64  |
-| 6 | leaf2   | 4b0201795b9b | ghcr.io/nokia/srlinux:24.7.2 | nokia_srlinux | running | 172.20.20.4/24  | 2001:172:20:20::4/64  |
-| 7 | spine   | 93c20f40ef66 | ghcr.io/nokia/srlinux:24.7.2 | nokia_srlinux | running | 172.20.20.3/24  | 2001:172:20:20::3/64  |
-+---+---------+--------------+------------------------------+---------------+---------+-----------------+-----------------------+
+╭─────────┬───────────────────────────────┬─────────┬────────────────────╮
+│   Name  │           Kind/Image          │  State  │   IPv4/6 Address   │
+├─────────┼───────────────────────────────┼─────────┼────────────────────┤
+│ client1 │ linux                         │ running │ 172.20.20.10       │
+│         │ ghcr.io/srl-labs/alpine       │         │ 2001:172:20:20::10 │
+├─────────┼───────────────────────────────┼─────────┼────────────────────┤
+│ client2 │ linux                         │ running │ 172.20.20.11       │
+│         │ ghcr.io/srl-labs/alpine       │         │ 2001:172:20:20::11 │
+├─────────┼───────────────────────────────┼─────────┼────────────────────┤
+│ client3 │ linux                         │ running │ 172.20.20.12       │
+│         │ ghcr.io/srl-labs/alpine       │         │ 2001:172:20:20::12 │
+├─────────┼───────────────────────────────┼─────────┼────────────────────┤
+│ client4 │ linux                         │ running │ 172.20.20.13       │
+│         │ ghcr.io/srl-labs/alpine       │         │ 2001:172:20:20::13 │
+├─────────┼───────────────────────────────┼─────────┼────────────────────┤
+│ leaf1   │ nokia_srlinux                 │ running │ 172.20.20.2        │
+│         │ ghcr.io/nokia/srlinux:24.10.1 │         │ 2001:172:20:20::2  │
+├─────────┼───────────────────────────────┼─────────┼────────────────────┤
+│ leaf2   │ nokia_srlinux                 │ running │ 172.20.20.4        │
+│         │ ghcr.io/nokia/srlinux:24.10.1 │         │ 2001:172:20:20::4  │
+├─────────┼───────────────────────────────┼─────────┼────────────────────┤
+│ spine   │ nokia_srlinux                 │ running │ 172.20.20.3        │
+│         │ ghcr.io/nokia/srlinux:24.10.1 │         │ 2001:172:20:20::3  │
+╰─────────┴───────────────────────────────┴─────────┴────────────────────╯
 ```
 
 To display all deployed labs on your VM at any time, use:
