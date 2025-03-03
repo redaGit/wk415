@@ -59,7 +59,7 @@ With the sros and junos image built, we can proceed with the lab deployment. We 
 
 Here's the topology.
 
-![image](../../images/vm-topology.jpg)
+![image](../../../images/vm-topology.jpg)
 
 First, let's switch back to the lab directory:
 
