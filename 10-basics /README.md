@@ -41,16 +41,6 @@ topology:
     - endpoints: [srl:e1-1, ceos:eth1]
 ```
 
-## Deployment attempt #1
-
-Try to deploy the lab:
-
-```bash
-sudo clab dep -t basic.clab.yml
-```
-
-Deployment fails, why?
-
 ## Image management
 
 Check what images are available on the system:
@@ -65,7 +55,7 @@ Pull SR Linux container image available for free:
 docker pull ghcr.io/nokia/srlinux
 ```
 
-Import cEOS image localled stored on your VM and pay attention to the 2nd argument for the `docker import` command where you have to specify the image:
+Import cEOS image located stored on your VM and pay attention to the 2nd argument for the `docker import` command where you have to specify the image:
 
 ```bash
 docker import ~/images/cEOS64-lab-4.33.0F.tar ceos:4.33.0F
@@ -92,9 +82,9 @@ ghcr.io/nokia/srlinux   latest    eb2a823cd8ce   8 days ago       2.35GB
 hello-world             latest    d2c94e258dcb   18 months ago    13.3kB
 ```
 
-## Deployment attempt #2
+## Deploy the lab
 
-Now that the images are available, try to deploy the lab again:
+Now that the images are available, try to deploy the lab:
 
 ```bash
 sudo clab dep -t basic.clab.yml
