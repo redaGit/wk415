@@ -14,7 +14,7 @@ cd ~ && git clone https://github.com/redaGit/cwrk.git \
 The repo should be cloned and you should be in the `cwrk` directory as per the output below:
 
 ```
-autoconuser@2:~/cwrk/10-basics$ 
+nokiauser@2:~/cwrk/10-basics$ 
 ```
 
 ## Topology
