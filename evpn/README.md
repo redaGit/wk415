@@ -6,7 +6,7 @@ Each workshop participant will be provided with the below topology consisting of
 
 ## NOS (Network Operating System)
 
-Both leafs and Spine nodes will be running the latest Nokia [SR Linux](https://www.nokia.com/networks/ip-networks/service-router-linux-NOS/) release 24.10.1.
+Both leafs and Spine nodes will be running the latest Nokia [SR Linux](https://www.nokia.com/networks/ip-networks/service-router-linux-NOS/) release.
 
 ## Deploying the lab
 
