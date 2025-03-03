@@ -76,18 +76,18 @@ sudo clab dep -c
 At the end of the deployment, the following table will be displayed. Wait for the vmx boot to be completed (see next section), before trying to login to vmx.
 
 ```bash
-╭─────────────────────┬────────────────────────────────────┬─────────┬─────────────────╮
-│         Name        │             Kind/Image             │  State  │  IPv4/6 Address │
-├─────────────────────┼────────────────────────────────────┼─────────┼─────────────────┤
-│ clab-vm-lab-srl     │ nokia_srlinux                      │ running │ 192.168.122.101 │
-│                     │ ghcr.io/nokia/srlinux:24.10.1      │         │ N/A             │
-├─────────────────────┼────────────────────────────────────┼─────────┼─────────────────┤
-│ clab-vm-lab-sros    │ nokia_sros                         │ running │ 192.168.122.102 │
-│                     │ vr-sros:24.7.R1                    │         │ N/A             │
-├─────────────────────┼────────────────────────────────────┼─────────┼─────────────────┤
-│ clab-vm-lab-vmx     │ juniper_vmx                        │ running │ 192.168.122.103 │
-│                     │ registry.srlinux.dev/pub/vr-vmx:bb │         │ N/A             │
-╰─────────────────────┴────────────────────────────────────┴─────────┴─────────────────╯
+╭──────────────┬────────────────────────────────────┬─────────┬─────────────────╮
+│     Name     │             Kind/Image             │  State  │  IPv4/6 Address │
+├──────────────┼────────────────────────────────────┼─────────┼─────────────────┤
+│ clab-vm-srl  │ nokia_srlinux                      │ running │ 192.168.122.101 │
+│              │ ghcr.io/nokia/srlinux:24.10.1      │         │ N/A             │
+├──────────────┼────────────────────────────────────┼─────────┼─────────────────┤
+│ clab-vm-sros │ nokia_sros                         │ running │ 192.168.122.102 │
+│              │ vr-sros:24.7.R1                    │         │ N/A             │
+├──────────────┼────────────────────────────────────┼─────────┼─────────────────┤
+│ clab-vm-vmx  │ juniper_vmx                        │ running │ 192.168.122.103 │
+│              │ registry.srlinux.dev/pub/vr-vmx:bb │         │ N/A             │
+╰──────────────┴────────────────────────────────────┴─────────┴─────────────────╯
 ```
 
 ### Monitoring the boot process
@@ -95,13 +95,13 @@ At the end of the deployment, the following table will be displayed. Wait for th
 To monitor the boot process of SR OS node, you can open a new terminal and run the following command:
 
 ```bash
-sudo docker logs -f clab-vm-lab-sros
+sudo docker logs -f clab-vm-sros
 ```
 
 To monitor the junox vmx boot, run:
 
 ```bash
-docker logs -f clab-vm-lab-vmx
+docker logs -f clab-vm-vmx
 ```
 
 Note that vmx takes around 8 mins to boot. Wait until the below line is seen in the boot logs.
@@ -115,19 +115,19 @@ Note that vmx takes around 8 mins to boot. Wait until the below line is seen in 
 To connect to SR OS node:
 
 ```bash
-ssh clab-vm-lab-sros
+ssh clab-vm-sros
 ```
 
 To connect to SR Linux node:
 
 ```bash
-ssh clab-vm-lab-srl
+ssh clab-vm-srl
 ```
 
 To connect to Junos node:
 
 ```bash
-ssh clab-vm-lab-vmx
+ssh clab-vm-vmx
 ```
 
 Refer to the passwords in your sheet.
