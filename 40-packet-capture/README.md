@@ -60,7 +60,7 @@ ping 10.10.10.2 network-instance default
 Windows/WSL:
 
 ```bash
-ssh autoconuser@<X>.wrkshpz.net \
+ssh nokiauser@<X>.wrkshpz.net \
 "sudo ip netns exec clab-startup-srl tcpdump -U -nni e1-1 -w -" | \
 /mnt/c/Program\ Files/Wireshark/wireshark.exe -k -i -
 ```
@@ -68,7 +68,7 @@ ssh autoconuser@<X>.wrkshpz.net \
 macOS:
 
 ```bash
-ssh autoconuser@<X>.wrkshpz.net \
+ssh nokiauser@<X>.wrkshpz.net \
 "sudo ip netns exec clab-startup-srl tcpdump -U -nni e1-1 -w -" | \
 /Applications/Wireshark.app/Contents/MacOS/Wireshark  -k -i -
 ```
