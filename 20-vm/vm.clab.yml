@@ -6,7 +6,7 @@ topology:
   nodes:
     srl:
       kind: nokia_srlinux
-      image: ghcr.io/nokia/srlinux:24.10.1
+      image: ghcr.io/nokia/srlinux
       mgmt-ipv4: 192.168.122.101
       startup-config: configs/srl.cfg
     sros:
