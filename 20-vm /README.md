@@ -57,6 +57,10 @@ registry.srlinux.dev/pub/vr-vmx                  bb          877650904adc   2 ye
 
 With the sros and junos image built, we can proceed with the lab deployment. We will deploy a lab with sros, junos and SR Linux to show that Containerlab can have a VM based docker node and a native docker node in the same lab.
 
+Here's the topology.
+
+~[image](../../images/vm-topology.jpg)
+
 First, let's switch back to the lab directory:
 
 ```bash
@@ -69,25 +73,41 @@ Now lets deploy the lab:
 sudo clab dep -c
 ```
 
-At the end of the deployment, the following table will be displayed. Wait for the sonic boot to be completed (see next section), before trying to login to sonic.
+At the end of the deployment, the following table will be displayed. Wait for the vmx boot to be completed (see next section), before trying to login to vmx.
 
 ```bash
-+---+---------------+--------------+--------------------------------+---------------+---------+----------------+----------------------+
-| # |     Name      | Container ID |             Image              |     Kind      |  State  |  IPv4 Address  |     IPv6 Address     |
-+---+---------------+--------------+--------------------------------+---------------+---------+----------------+----------------------+
-| 1 | clab-vm-sonic | c865295f6b4e | vrnetlab/sonic_sonic-vs:202405 | sonic-vm      | running | 172.20.20.3/24 | 3fff:172:20:20::3/64 |
-| 2 | clab-vm-srl   | 51b41a280f84 | ghcr.io/nokia/srlinux          | nokia_srlinux | running | 172.20.20.2/24 | 3fff:172:20:20::2/64 |
-+---+---------------+--------------+--------------------------------+---------------+---------+----------------+----------------------+
+╭─────────────────────┬────────────────────────────────────┬─────────┬─────────────────╮
+│         Name        │             Kind/Image             │  State  │  IPv4/6 Address │
+├─────────────────────┼────────────────────────────────────┼─────────┼─────────────────┤
+│ clab-vm-lab-srl     │ nokia_srlinux                      │ running │ 192.168.122.101 │
+│                     │ ghcr.io/nokia/srlinux:24.10.1      │         │ N/A             │
+├─────────────────────┼────────────────────────────────────┼─────────┼─────────────────┤
+│ clab-vm-lab-sros    │ nokia_sros                         │ running │ 192.168.122.102 │
+│                     │ vr-sros:24.7.R1                    │         │ N/A             │
+├─────────────────────┼────────────────────────────────────┼─────────┼─────────────────┤
+│ clab-vm-lab-vmx     │ juniper_vmx                        │ running │ 192.168.122.103 │
+│                     │ registry.srlinux.dev/pub/vr-vmx:bb │         │ N/A             │
+╰─────────────────────┴────────────────────────────────────┴─────────┴─────────────────╯
 ```
-
-
 
 ### Monitoring the boot process
 
-To monitor the boot process of SR OS nodes or Cisco XRd node, you can open a new terminal and run the following command:
+To monitor the boot process of SR OS node, you can open a new terminal and run the following command:
 
 ```bash
 sudo docker logs -f pe1-sr1
+```
+
+To monitor the junox vmx boot, run:
+
+```bash
+docker logs -f clab-vm-lab-vmx
+```
+
+Note that vmx takes around 8mins to boot. Wait until the below line is seen in the boot logs.
+
+```
+2025-03-03 13:41:49,125: launch     INFO     Startup complete in: 0:08:31.546370
 ```
 
 ## Connecting to the nodes
@@ -95,48 +115,33 @@ sudo docker logs -f pe1-sr1
 To connect to SR OS node:
 
 ```bash
-ssh admin@pe1-sr1
+ssh clab-vm-lab-sros
 ```
 
 To connect to SR Linux node:
 
 ```bash
-ssh pe2-srL
+ssh clab-vm-lab-srl
 ```
 
 To connect to Junos node:
 
 ```bash
-ssh ????
+ssh clab-vm-lab-vmx
 ```
 
-Refer to the passwords in your card.
+Refer to the passwords in your sheet.
 
-## Configuring the nodes
+## Configuration
 
-Login to SR Linux node and run `enter candidate` to get into configuration edit mode and paste the below lines to configure the interface:
+All 3 devices are configured with a startup configuration that will create the interfaces.
+
+Run a ping between the interface to confirm reachability.
+
+Login to SR Linux node and run a ping to vmx:
 
 ```srl
-set / interface ethernet-1/1 admin-state enable
-set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
-set / interface ethernet-1/1 subinterface 0 ipv4 address 10.0.0.1/31
-set / network-instance default type default
-set / network-instance default interface ethernet-1/1.0
-```
-Once configured issue the `commit now` command to make sure the candidate config is merged into running.
-
-Now we configured the two systems to be able to communicate with each other. Perform a ping from SONiC to SR Linux:
-
-```bash
-admin@sonic:~$ ping 10.0.0.1 -c 3
-PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
-64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=2.00 ms
-64 bytes from 10.0.0.1: icmp_seq=2 ttl=64 time=1.97 ms
-64 bytes from 10.0.0.1: icmp_seq=3 ttl=64 time=3.17 ms
-
---- 10.0.0.1 ping statistics ---
-3 packets transmitted, 3 received, 0% packet loss, time 2003ms
-rtt min/avg/max/mdev = 1.965/2.378/3.168/0.558 ms
+ping 192.168.20.2 network-instance default
 ```
 
 We have now completed the section on bring VM based nodes into Containerlab.
