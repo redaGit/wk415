@@ -1,0 +1,24 @@
+name: vm-lab
+
+prefix: ""
+mgmt:
+  ipv4-subnet: 192.168.122.0/24
+topology:
+  nodes:
+    srl:
+      kind: nokia_srlinux
+      image: ghcr.io/nokia/srlinux:24.10.1
+      mgmt-ipv4: 192.168.122.101
+    sros:
+      kind: nokia_sros
+      image: vrnetlab/nokia_sros:24.7.R1
+      mgmt-ipv4: 192.168.122.102
+      license: /opt/srexperts/license-sros24.txt
+    vmx:
+      kind: juniper_vmx
+      image: registry.srlinux.dev/pub/vr-vmx:bb
+      mgmt-ipv4: 192.168.122.103
+  links:
+    - endpoints: ["srl:e1-1", "sros:eth1"]
+    - endpoints: ["srl:e1-2", "vmx:eth1"]
+    - endpoints: ["sros:eth2", "vmx:eth2"]
