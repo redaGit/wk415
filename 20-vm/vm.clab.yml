@@ -13,7 +13,7 @@ topology:
       kind: nokia_sros
       image: vrnetlab/nokia_sros:24.7.R1
       mgmt-ipv4: 192.168.122.102
-      license: /opt/srexperts/license-sros24.txt
+      license: /home/nokiauser/images/sros-24.lic
       startup-config: configs/sros.partial.cfg
     vmx:
       kind: juniper_vmx
