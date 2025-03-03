@@ -141,7 +141,7 @@ Run a ping between the interface to confirm reachability.
 Login to SR Linux node and run a ping to vmx:
 
 ```srl
-ping 192.168.20.2 network-instance default
+ping -c 3 192.168.20.2 network-instance default
 ```
 
 We have now completed the section on bring VM based nodes into Containerlab.
