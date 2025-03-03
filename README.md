@@ -46,5 +46,7 @@ Shortcut links to major sections in this README:
 | 5- [Layer 2 EPVN](evpn/README.md/#configure-l2-evpn-vxlan) 
 | 6- [Layer 3 EVPN](evpn/README.md/#configure-layer-3-evpn-vxlan) 
 | 6- [CLI Quick Reference](evpn/README.md/#sr-linux-configuration-mode) 
-| 7- [Bonus](evpn/README.md/#bonus---interconnecting-layer-2-and-layer-3-using-irb)
+| Bonus
+| 1- [IRB](evpn/README.md/#bonus---interconnecting-layer-2-and-layer-3-using-irb)
+| 2- [Streaming Telemetry](Telemetry/README.md)
 
