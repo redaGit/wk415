@@ -1014,7 +1014,6 @@ Then deploy the lab using `sudo clab deploy -t srl-evpn.clab.yml`.
 
 ## Useful links
 
-* [Network Developer Portal](https://network.developer.nokia.com/)
 * [containerlab](https://containerlab.dev/)
 * [gNMIc](https://gnmic.openconfig.net/)
 
