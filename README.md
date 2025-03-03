@@ -48,5 +48,5 @@ Shortcut links to major sections in this README:
 | 6- [CLI Quick Reference](evpn/README.md/#sr-linux-configuration-mode) 
 | Bonus
 | 1- [IRB](evpn/README.md/#bonus---interconnecting-layer-2-and-layer-3-using-irb)
-| 2- [Streaming Telemetry](Telemetry/README.md)
+| 2- [Streaming Telemetry](Bonus-Telemetry/README.md)
 
