@@ -37,7 +37,7 @@ Shortcut links to major sections in this README:
 |  - [Basics- Module 10](/10-basics/README.md)
 |  - [Startup config - Module 15](/15-startup/README.md)
 |  - [VM-based nodes- Module 20](/20-vm/README.md)
-|  - [Packet capture- Mlldule 40](/40-packet-capture/README.md)
+|  - [Packet capture- Module 40](/40-packet-capture/README.md)
 | Deploying DC Leaf & Spine Fabric
 | 1- [Lab Topology](evpn/README.md/#lab-topology/README.md) 
 | 2- [Deploying the lab](evpn/README.md/#deploying-the-lab)
