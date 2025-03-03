@@ -6,7 +6,7 @@ Containerlab offers a simple way to capture the packets from any interface of an
 
 Everything we are going to do in this exercise is explained in details in the [Containerlab documentation](https://containerlab.dev/manual/wireshark/).
 
-**Note: We will be using the [startup lab](../15-startup) for this section. If this is already destroyed, please re-deploy it before continuing. Once the lab is deployed, login to the SR Linux node and start a ping using**
+**Note: We will be using the [startup lab](../15-startup/README.md) for this section. If this lab is already destroyed, please re-deploy it before continuing. Once the lab is deployed, login to the SR Linux node and start a ping using**
 
 ```srl
 ping 10.10.10.2 network-instance default
