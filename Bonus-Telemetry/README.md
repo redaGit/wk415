@@ -27,39 +27,4 @@ The streaming telemetry lab' [topology file](https://github.com/srl-labs/srl-tel
 
 As you can see, this topo file is not a joke, and once the deployment finishes, you might want to understand what exactly was deployed and how the topology is structured. Enter graphs.
 
-## Containerlab and graphing options
 
-When your topology has 3-5 nodes and a few links, you can easily visualize the topology in your head, but once your lab grows bigger, with more nodes involved and more links created, it becomes harder to remember what is what and where.
-
-To help you with visualizing the topology, containerlab provides a few graphing options (<https://containerlab.dev/cmd/graph/>) that we will explore briefly.
-
-### Web graph
-
-After you deployed the lab, run the `graph` command:
-
-```
-cd ~/srl-telemetry-lab
-sudo clab graph
-```
-
-The local web server provided by containerlab will be welcoming you at `http://<ID>.wrkshpz.net:50080` where `<ID>` is your ID. The web server will render the deployed topology in an interactive graph that you can sort vertically or horizontally.
-
-The `group` options on the node level help you to order the lab nodes in the graph.
-
-### Drawio export
-
-The web graph is great, but has a number of limitations:
-
-- Not editable
-- Opinionated
-- Only one ”pane” - physical
-
-To combat these limitations, another project has been created in the containerlab ecosystem - [clab-io-draw](https://github.com/srl-labs/clab-io-draw).
-
-It allows to generate a drawio topology from a containerlab topology and does so with style!
-
-```bash
-sudo clab graph --drawio --drawio-args "--theme grafana_dark"
-```
-
-It has many neat options, so please go checkout the readme file at the projects' repo.
