@@ -101,7 +101,7 @@ enter oc
 info flat interfaces
 ```
 
-The management interface configuration can be seen in OC format.
+The management interface configuration can be seen in OC format. The other interfaces are enabled with no IP configuration.
 
 ### IPv4 Link Addressing
 
