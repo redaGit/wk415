@@ -55,7 +55,7 @@ Login to `clab-startup-srl` and initiate a ping to `10.10.10.2`:
 ping 10.10.10.2 network-instance default
 ```
 
-<small>The command is provided for WSL and Mac systems, assuming default Wireshark installation path. Replace `X` with your VM number.</small>
+<small>The command is provided for WSL and Mac systems, assuming default Wireshark installation path. Replace `X` with your VM number.Enter the password at the prompt.</small>
 
 Windows/WSL:
 
