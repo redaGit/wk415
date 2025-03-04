@@ -134,3 +134,9 @@ To access the Edgeshark UI, open a browser and navigate to the following URL (su
 Note, the http schema is important, since https is not enabled.
 
 To startup a packet capture from Edgeshark UI, click on the `wireshark` icon next to `e1-1` interface under clab-startup-srl. Ensure you ping is still running. This will open Wireshark on your PC and display the ICMP packets.
+
+## Destroy startup lab
+
+```bash
+sudo clab des -t ~/cwrk/15-startup/startup.clab.yml
+```
