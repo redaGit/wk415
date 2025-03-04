@@ -13,7 +13,8 @@ Both leafs and Spine nodes will be running the latest Nokia [SR Linux](https://w
 To deploy the lab, run the following:
 
 ```bash
-sudo clab deploy -t ~/cwrk/evpn/srl-evpn.clab.yml
+cd ~cwrk/evpn
+sudo clab deploy -t srl-evpn.clab.yml
 ```
 
 Containerlab will deploy the lab and display a table with the list of nodes and their IPs.
@@ -113,7 +114,7 @@ The management interface configuration can be seen in OC format. The other inter
 
 ### Using gNMI to push Openconfig
 
-Run the following commands to push the configuration in the files to the devices. There is no native configuration for spine as all required configs are covered in Openconfig.
+Exit from SR Linux and on your VM, run the following commands to push the configuration in the files to the devices. There is no native configuration for spine as all required configs are covered in Openconfig.
 
 ```
 gnmic -a leaf1:57401 -u admin -p NokiaSrl1! --insecure set --update-path openconfig:/ --update-file configs/oc/leaf1-oc.json --update-path srl_nokia:/ --update-file configs/srl/leaf1-native.json --encoding=JSON_IETF
