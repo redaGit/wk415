@@ -64,7 +64,7 @@ docker import ~/images/cEOS64-lab-4.33.0F.tar ceos:4.33.0F
 Expected output:
 
 ```bash
-sha256:927c8cd41224d926dcbd491211653a0885d09733d1210806987a91ec1798e6d8
+sha256:f4c604a5da646b0b1fa5a895086465472aa1f25c386ebc8aa2e6e72de277e618
 ```
 
 Check the local image store again:
