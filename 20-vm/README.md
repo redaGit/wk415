@@ -145,3 +145,10 @@ ping -c 3 192.168.20.2 network-instance default
 ```
 
 We have now completed the section on bring VM based nodes into Containerlab.
+
+You may destroy the lab using:
+
+```bash
+sudo clab des -t ~/cwrk/20-vm/vm.clab.yml
+```
+
