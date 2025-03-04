@@ -63,7 +63,7 @@ ssh leaf1
 To login to the client, identify the client hostname using the `sudo clab inspect --all` command above and then:
 
 ```bash
-sudo docker exec –it client3 sh
+sudo docker exec –it client3 bash
 ```
 
 ## Physical link connectivity
@@ -485,7 +485,7 @@ IP addresses on the client side are pre-configured (on interface eth1) during de
 
 To login to Client1, use:
 ```bash
-sudo docker exec -it client1 sh
+sudo docker exec -it client1 bash
 ```
 
 Output on Client1:
@@ -612,13 +612,13 @@ Verify if Client 3 is able to ping Client 1
 Login to Client3 using:
 
 ```bash
-sudo docker exec -it client3 sh
+sudo docker exec -it client3 bash
 ```
 
 Run `ip a` and note down the MAC address of eth1 interface (facing Leaf2).
 
 ```bash
-# sudo docker exec -it client3 sh
+# sudo docker exec -it client3 bash
 / # ip a
 26: eth1@if25: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 9500 qdisc noqueue state UP
     link/ether aa:c1:ab:67:32:61 brd ff:ff:ff:ff:ff:ff
@@ -892,7 +892,7 @@ IPv4 unicast route table of network instance ip-vrf-1
 
 ### Ping between Client 2 & 4
 
-Login to client2 using `sudo docker exec -it client2 sh`.
+Login to client2 using `sudo docker exec -it client2 bash`.
 
 Ping Client4 IP from Client2:
 
@@ -974,7 +974,7 @@ set / network-instance ip-vrf-1 interface irb1.100
 
 ### Ping between Client 1 & 4
 
-Login to Client 1 using `sudo docker exec –it client1 sh`.
+Login to Client 1 using `sudo docker exec –it client1 bash`.
 
 Ping Client4 IP from Client1:
 
