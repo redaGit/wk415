@@ -1,6 +1,7 @@
 name: vm
 
 mgmt:
+  network: vm-lab
   ipv4-subnet: 192.168.122.0/24
 topology:
   nodes:
