@@ -34,7 +34,7 @@ vrnetlab/nokia_sros           24.7.R1   553e94475c12   7 seconds ago   889MB
 
 Junos VM docker image is already prepared and is located at `~/images/vr-vmx.tar.gz` on your VM.
 
-Import this image into docker.
+Import this image into docker. Wait for a few seconds until the system uncompresses the file and starts showing the output.
 
 ```
 docker load -i ~/images/vr-vmx.tar.gz
