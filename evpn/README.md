@@ -735,6 +735,8 @@ tools system traffic-monitor verbose protocol udp destination-port 4789
 
 In this command, port 4789 is standard port for VXLAN.
 
+Also, try the commands in the [packet capture section](../40-packet-capture) of this workshop to see VxLAN packet dumps in wireshark.
+
 ## Configure Layer 3 EVPN-VXLAN
 
 Our final step is to configure a Layer 3 EVPN-VXLAN.
