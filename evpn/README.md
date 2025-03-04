@@ -894,12 +894,20 @@ IPv4 unicast route table of network instance ip-vrf-1
 
 ### Ping between Client 2 & 4
 
-Login to client2 using `sudo docker exec -it client2 bash`.
+Login to client2 using:
+
+```bash
+sudo docker exec -it client2 bash
+```
 
 Ping Client4 IP from Client2:
 
 ```bash
-/ # ping -c 1 10.90.1.1
+ping -c 1 10.90.1.1
+```
+
+Output:
+```bash
 PING 10.90.1.1 (10.90.1.1): 56 data bytes
 64 bytes from 10.90.1.1: seq=0 ttl=253 time=2.208 ms
 
