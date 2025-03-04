@@ -123,40 +123,6 @@
         }
       },
       {
-        "name": "irb1",
-        "config": {
-          "name": "irb1",
-          "type": "ipForward",
-          "enabled": true
-        },
-        "subinterfaces": {
-          "subinterface": [
-            {
-              "index": 100,
-              "config": {
-                "index": 100
-              },
-              "ipv4": {
-                "addresses": {
-                  "address": [
-                    {
-                      "ip": "172.16.10.253",
-                      "config": {
-                        "ip": "172.16.10.253",
-                        "prefix-length": 24
-                      }
-                    }
-                  ]
-                },
-                "config": {
-                  "enabled": true
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
         "name": "system0",
         "config": {
           "name": "system0",
