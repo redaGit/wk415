@@ -10,17 +10,10 @@ Both leafs and Spine nodes will be running the latest Nokia [SR Linux](https://w
 
 ## Deploying the lab
 
-Verify that the git repo files are available on your VM.
-
-```bash
-ls -lrt cwrk/evpn/
-```
-
 To deploy the lab, run the following:
 
 ```bash
-cd cwrk/evpn
-sudo clab deploy -t srl-evpn.clab.yml
+sudo clab deploy -t ~/cwrk/evpn/srl-evpn.clab.yml
 ```
 
 Containerlab will deploy the lab and display a table with the list of nodes and their IPs.
