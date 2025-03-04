@@ -20,7 +20,7 @@ A Nokia team member will provide you with a card that contains:
 
 
 ## Workshop
-The objective of the hands on section of this workshop is the following:
+The objectives of the hands on section of this workshop are the following:
 - Understand containerlab 
 - Using containerlab to deploy virtual networks and troubleshooting
 - Build a DC fabric with leaf and spine
@@ -28,7 +28,7 @@ The objective of the hands on section of this workshop is the following:
 - Build Layer 3 EVPN-VXLAN
 
 
-Shortcut links to major sections in this README:
+Shortcut links to the modules:
 
 |   |
 |---|
