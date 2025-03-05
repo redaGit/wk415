@@ -25,6 +25,22 @@ The streaming telemetry lab' [topology file](https://github.com/srl-labs/srl-tel
 - port exposure to the host to make the lab services accessible from the outside
 - using of `group` parameter to influence lab nodes ordering in the graph products
 
-As you can see, this topo file is not a joke, and once the deployment finishes, you might want to understand what exactly was deployed and how the topology is structured. Enter graphs.
+## Start Grafana 
+
+Using your laptop browser
+- http://<id>.wrkshpz.net:3000
+- Dashboards
+- Network Telemetry
+
+## Start traffic 
+
+```bash
+cd srl-telemetry-lab
+```
+
+```bash
+./traffic.sh start all
+```
+
 
 
