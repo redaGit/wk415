@@ -39,6 +39,7 @@ Shortcut links to the modules:
 |  - [VM-based nodes- Module 20](/20-vm/README.md)
 |  - [Packet capture- Module 40](/40-packet-capture/README.md)
 |  - [Registry- Module 50](/50-registry/README.md)
+|  - [Scaling-Module 25](/25-scaling/README.md)
 | Deploying DC Leaf & Spine Fabric
 | 1- [Lab Topology](evpn/README.md/#lab-topology/README.md) 
 | 2- [Deploying the lab](evpn/README.md/#deploying-the-lab)
