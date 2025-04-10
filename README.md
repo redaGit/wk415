@@ -24,6 +24,7 @@ The objectives of the hands on section of this workshop are the following:
 - Understand containerlab 
 - Using containerlab to deploy virtual networks and troubleshooting
 - Build a DC fabric with leaf and spine
+- IP-VPN 
 - Build Layer 2 EVPN-VXLAN
 - Build Layer 3 EVPN-VXLAN
 
