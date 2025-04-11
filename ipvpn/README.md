@@ -69,6 +69,11 @@ To login to the client, identify the client hostname using the `sudo clab inspec
 sudo docker exec –it client3 bash
 ```
 
+## Pre-configuration
+
+All P nodes are pre-configured with SR-ISIS.
+All CE nodes are pre-configured with interfaces, loopback and BGP to the PE.
+
 ## Physical link connectivity
 
 We will be using [Openconfig](https://www.openconfig.net/) to configure the following:
@@ -184,5 +189,181 @@ Here's a reference table with some commonly used commands.
 | Access Linux shell | `bash` |
 | Find a command | `tree flat detail \| grep <keyword>` |
 | Exit from the node | `quit` or `CTRL+d` |
+
+## Configuring ISIS
+
+On PE1:
+
+```srl
+set / network-instance default protocols isis instance 1 admin-state enable
+set / network-instance default protocols isis instance 1 net [ 49.0000.0010.0100.1001.00 ]
+set / network-instance default protocols isis instance 1 interface ethernet-1/1.0 circuit-type point-to-point
+set / network-instance default protocols isis instance 1 interface ethernet-1/2.0 circuit-type point-to-point
+set / network-instance default protocols isis instance 1 interface system0.0 circuit-type point-to-point
+```
+
+On PE2:
+
+```srl
+set / network-instance default protocols isis instance 1 admin-state enable
+set / network-instance default protocols isis instance 1 net [ 49.0000.0020.0200.2002.00 ]
+set / network-instance default protocols isis instance 1 interface ethernet-1/1.0 circuit-type point-to-point
+set / network-instance default protocols isis instance 1 interface ethernet-1/2.0 circuit-type point-to-point
+set / network-instance default protocols isis instance 1 interface system0.0 circuit-type point-to-point
+```
+
+### Verifying ISIS
+
+On either PE1 or PE2:
+
+```srl
+show network-instance default protocols isis adjacency
+```
+
+ISIS adjacency should be UP between the PE and adjaceny P nodes.
+
+Both PE1 and PE2 will now have reachability to all other nodes in the topology.
+
+Check the routing table on either PE1 or PE2.
+
+```srl
+show network-instance default route-table ipv4-unicast summary
+```
+
+## Configuring Segment Routing
+
+On PE1:
+
+```srl
+set / network-instance default segment-routing mpls global-block label-range srgb-range-1
+set / network-instance default segment-routing mpls local-prefix-sid 1 interface system0.0
+set / network-instance default segment-routing mpls local-prefix-sid 1 ipv4-label-index 1
+set / network-instance default protocols isis dynamic-label-block srlb-dynamic-1
+set / network-instance default protocols isis instance 1 segment-routing mpls dynamic-adjacency-sids all-interfaces true
+```
+
+On PE2:
+
+```srl
+set / network-instance default segment-routing mpls global-block label-range srgb-range-1
+set / network-instance default segment-routing mpls local-prefix-sid 1 interface system0.0
+set / network-instance default segment-routing mpls local-prefix-sid 1 ipv4-label-index 2
+set / network-instance default protocols isis dynamic-label-block srlb-dynamic-1
+set / network-instance default protocols isis instance 1 segment-routing mpls dynamic-adjacency-sids all-interfaces true
+```
+
+Verify tunnel table on PE1 and PE2 to see the SR-ISIS tunnels
+
+```srl
+show network-instance default tunnel-table
+```
+
+## Configure RED VRF
+
+On PE1:
+
+```srl
+set / network-instance vrf-red type ip-vrf
+set / network-instance vrf-red interface ethernet-1/10.0
+set / network-instance vrf-red protocols bgp admin-state enable
+set / network-instance vrf-red protocols bgp autonomous-system 64555
+set / network-instance vrf-red protocols bgp router-id 1.1.1.1
+set / network-instance vrf-red protocols bgp ebgp-default-policy import-reject-all false
+set / network-instance vrf-red protocols bgp ebgp-default-policy export-reject-all false
+set / network-instance vrf-red protocols bgp afi-safi ipv4-unicast admin-state enable
+set / network-instance vrf-red protocols bgp group vrf-red-peers peer-as 64501
+set / network-instance vrf-red protocols bgp group vrf-red-peers send-default-route ipv4-unicast true
+set / network-instance vrf-red protocols bgp neighbor 10.1.1.1 peer-group vrf-red-peers
+```
+
+On PE2:
+
+```srl
+set / network-instance vrf-red type ip-vrf
+set / network-instance vrf-red interface ethernet-1/10.0
+set / network-instance vrf-red protocols bgp admin-state enable
+set / network-instance vrf-red protocols bgp autonomous-system 64555
+set / network-instance vrf-red protocols bgp router-id 2.2.2.2
+set / network-instance vrf-red protocols bgp ebgp-default-policy import-reject-all false
+set / network-instance vrf-red protocols bgp ebgp-default-policy export-reject-all false
+set / network-instance vrf-red protocols bgp afi-safi ipv4-unicast admin-state enable
+set / network-instance vrf-red protocols bgp group vrf-red-peers peer-as 64501
+set / network-instance vrf-red protocols bgp group vrf-red-peers send-default-route ipv4-unicast true
+set / network-instance vrf-red protocols bgp neighbor 10.1.1.5 peer-group vrf-red-peers
+```
+
+### Verifying VRF
+
+On PE1 or PE2, verify the VRF RED PE-CE BGP neighbor status:
+
+```srl
+show network-instance vrf-red protocols bgp neighbor
+```
+
+Verify VRF RED route-table:
+
+```srl
+show network-instance vrf-red route-table
+```
+
+Ping from PE1 to CEA1 interface IP:
+
+```srl
+ping -c 3 10.1.1.1 network-instance vrf-red
+```
+
+## Configure BLUE VRF
+
+On PE1:
+
+```srl
+set / network-instance vrf-blue type ip-vrf
+set / network-instance vrf-blue interface ethernet-1/11.0
+set / network-instance vrf-blue protocols bgp admin-state enable
+set / network-instance vrf-blue protocols bgp autonomous-system 64666
+set / network-instance vrf-blue protocols bgp router-id 1.1.1.1
+set / network-instance vrf-blue protocols bgp ebgp-default-policy import-reject-all false
+set / network-instance vrf-blue protocols bgp ebgp-default-policy export-reject-all false
+set / network-instance vrf-blue protocols bgp afi-safi ipv4-unicast admin-state enable
+set / network-instance vrf-blue protocols bgp group vrf-blue-peers peer-as 64502
+set / network-instance vrf-blue protocols bgp group vrf-blue-peers send-default-route ipv4-unicast true
+set / network-instance vrf-blue protocols bgp neighbor 10.1.1.3 peer-group vrf-blue-peers
+```
+
+On PE2:
+
+```srl
+set / network-instance vrf-blue type ip-vrf
+set / network-instance vrf-blue interface ethernet-1/11.0
+set / network-instance vrf-blue protocols bgp admin-state enable
+set / network-instance vrf-blue protocols bgp autonomous-system 64666
+set / network-instance vrf-blue protocols bgp router-id 2.2.2.2
+set / network-instance vrf-blue protocols bgp ebgp-default-policy import-reject-all false
+set / network-instance vrf-blue protocols bgp ebgp-default-policy export-reject-all false
+set / network-instance vrf-blue protocols bgp afi-safi ipv4-unicast admin-state enable
+set / network-instance vrf-blue protocols bgp group vrf-blue-peers peer-as 64502
+set / network-instance vrf-blue protocols bgp group vrf-blue-peers send-default-route ipv4-unicast true
+set / network-instance vrf-blue protocols bgp neighbor 10.1.1.7 peer-group vrf-blue-peers
+```
+
+### Verifying VRF
+
+On PE1 or PE2, verify the VRF BLUE PE-CE BGP neighbor status:
+
+```srl
+show network-instance vrf-blue protocols bgp neighbor
+```
+
+Verify VRF BLUE route-table:
+
+```srl
+show network-instance vrf-blue route-table
+```
+
+Ping from PE2 to CEZ2 interface IP:
+
+```srl
+ping -c 3 10.1.1.7 network-instance vrf-blue
+```
 
 
