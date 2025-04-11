@@ -398,6 +398,36 @@ On PE1 or PE2, check BGP neighbor status:
 show network-instance default protocols bgp neighbor
 ```
 
+## Configuring VRF RD, RT and Data plane
+
+On PE1:
+
+```srl
+set / network-instance vrf-red protocols bgp-vpn bgp-instance 1 route-target export-rt target:64501:100 import-rt target:64501:100
+set / network-instance vrf-red protocols bgp-vpn bgp-instance 1 route-distinguisher rd 1.1.1.1:64501
+set / network-instance vrf-red protocols bgp-ipvpn bgp-instance 1 admin-state enable
+set / network-instance vrf-red protocols bgp-ipvpn bgp-instance 1 mpls next-hop-resolution allowed-tunnel-types [ sr-isis ]
+set / network-instance vrf-blue protocols bgp-vpn bgp-instance 1 route-target export-rt target:64502:200 import-rt target:64502:200
+set / network-instance vrf-blue protocols bgp-vpn bgp-instance 1 route-distinguisher rd 1.1.1.1:64502
+set / network-instance vrf-blue protocols bgp-ipvpn bgp-instance 1 admin-state enable
+set / network-instance vrf-blue protocols bgp-ipvpn bgp-instance 1 mpls next-hop-resolution allowed-tunnel-types [ sr-isis ]
+```
+
+On PE2:
+
+```srl
+set / network-instance vrf-red protocols bgp-vpn bgp-instance 1 route-target export-rt target:64501:100 import-rt target:64501:100
+set / network-instance vrf-red protocols bgp-vpn bgp-instance 1 route-distinguisher rd 1.1.1.1:64501
+set / network-instance vrf-red protocols bgp-ipvpn bgp-instance 1 admin-state enable
+set / network-instance vrf-red protocols bgp-ipvpn bgp-instance 1 mpls next-hop-resolution allowed-tunnel-types [ sr-isis ]
+set / network-instance vrf-blue protocols bgp-vpn bgp-instance 1 route-target export-rt target:64502:200 import-rt target:64502:200
+set / network-instance vrf-blue protocols bgp-vpn bgp-instance 1 route-distinguisher rd 1.1.1.1:64502
+set / network-instance vrf-blue protocols bgp-ipvpn bgp-instance 1 admin-state enable
+set / network-instance vrf-blue protocols bgp-ipvpn bgp-instance 1 mpls next-hop-resolution allowed-tunnel-types [ sr-isis ]
+```
+
+### Verifying VPN-IPv4 route advertisement
+
 On PE1 or PE2, verify the vpn-ipv4 routes being advertised, received and installed.
 
 ```srl
@@ -444,7 +474,7 @@ Similar login to CEZ1 and ping CEZ2 loopback IP.
 ping -c 3 172.16.2.1 network-instance default
 ```
 
-From CEA1, try to ping CEZ1 loopback IP.
+From CEA1, try to ping CEZ2 loopback IP.
 
 ```srl
 ping -c 3 172.16.2.1 network-instance default
@@ -452,9 +482,54 @@ ping -c 3 172.16.2.1 network-instance default
 
 Ping should fail because PE1 VRF RED does not have a route to reach CEZ2 loopback IP which is on VRF BLUE.
 
+## Inter VRF connectivity
 
-## Verifying VRF connectivity with remote endpoints
+Now that each VRF endpoints are able to each other, let's advertise the VRF routes between each other so that each endpoint is able to reach any other endpoint - whether in the same VRF or different VRF.
 
-Now that both PEs are adversting
+This advertisement will be based on Route Targets.
 
+Before we implement this, verify the route target that is advertised currently.
+
+On PE1:
+
+```srl
+show network-instance default protocols bgp routes l3vpn-ipv4-unicast prefix 172.16.2.1/32 detail
+```
+
+We can see that the route only has the VRF BLUE route target.
+
+Now let's apply an export and import policy to advertise each route with both route targets and for each PE to import routes with any of the 2 route targets.
+
+On both PE1 and PE2:
+
+```srl
+set / routing-policy community-set common match-set-options any
+set / routing-policy community-set common member [ target:64501:100 target:64502:200 ]
+set / routing-policy policy vrf-common-export statement exp1 action policy-result accept
+set / routing-policy policy vrf-common-export statement exp1 action bgp communities add common
+set / routing-policy policy vrf-common-import statement imp1 match bgp community-set common
+set / routing-policy policy vrf-common-import statement imp1 action policy-result accept
+set / network-instance vrf-red protocols bgp-vpn bgp-instance 1 export-policy [ vrf-common-export ]
+set / network-instance vrf-red protocols bgp-vpn bgp-instance 1 import-policy [ vrf-common-import ]
+set / network-instance vrf-blue protocols bgp-vpn bgp-instance 1 export-policy [ vrf-common-export ]
+set / network-instance vrf-blue protocols bgp-vpn bgp-instance 1 import-policy [ vrf-common-import ]
+```
+
+### Verify route table
+
+Verify both VRF route table to confirm that the other VRF routes are now reachable.
+
+```srl
+show network-instance vrf-red route-table
+```
+
+```srl
+show network-instance vrf-blue route-table
+```
+
+Login to CEA1 and ping CEZ2 loopback IP:
+
+```srl
+ping -c 3 172.16.2.1 network-instance default
+```
 
