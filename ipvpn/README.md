@@ -1,6 +1,6 @@
 # Lab Topology
 
-![image](lab-topology.jpg)
+![image](ip-vpn-topology.jpg)
 
 # Deploying the lab
 
