@@ -366,4 +366,95 @@ Ping from PE2 to CEZ2 interface IP:
 ping -c 3 10.1.1.7 network-instance vrf-blue
 ```
 
+## Configure BGP between PE1 and PE2
+
+Next, we will configure BGP between PE1 and PE2 to advertise vpn-ipv4 addresses.
+
+On PE1:
+
+```srl
+set / network-instance default protocols bgp autonomous-system 64500
+set / network-instance default protocols bgp router-id 1.1.1.1
+set / network-instance default protocols bgp afi-safi l3vpn-ipv4-unicast admin-state enable
+set / network-instance default protocols bgp group pe peer-as 64500
+set / network-instance default protocols bgp neighbor 2.2.2.2 peer-group pe
+```
+
+On PE2:
+
+```srl
+set / network-instance default protocols bgp autonomous-system 64500
+set / network-instance default protocols bgp router-id 2.2.2.2
+set / network-instance default protocols bgp afi-safi l3vpn-ipv4-unicast admin-state enable
+set / network-instance default protocols bgp group pe peer-as 64500
+set / network-instance default protocols bgp neighbor 1.1.1.1 peer-group pe
+```
+
+### Verifying BGP for vpn-ipv4 family
+
+On PE1 or PE2, check BGP neighbor status:
+
+```srl
+show network-instance default protocols bgp neighbor
+```
+
+On PE1 or PE2, verify the vpn-ipv4 routes being advertised, received and installed.
+
+```srl
+show network-instance default protocols bgp neighbor 2.2.2.2 advertised-routes l3vpn-ipv4-unicast
+```
+
+```srl
+show network-instance default protocols bgp neighbor 2.2.2.2 received-routes l3vpn-ipv4-unicast
+```
+
+```srl
+show network-instance default protocols bgp routes l3vpn-ipv4-unicast summary
+```
+
+Verify VRF RED route table on PE1 which should now have the CEA2 loopback IP.
+
+```srl
+show network-instance vrf-red route-table
+```
+
+Verify VRF BLUE route table on PE1 which should now have the CEZ2 loopback IP.
+
+```srl
+show network-instance vrf-blue route-table
+```
+
+Login to CEA1 and check its route table:
+
+```srl
+show network-instance default route-table
+```
+
+There is a default route that is advertised by the PE.
+
+From CEA1, ping CEA2 loopback IP:
+
+```srl
+ping -c 3 192.168.2.1 network-instance default
+```
+
+Similar login to CEZ1 and ping CEZ2 loopback IP.
+
+```srl
+ping -c 3 172.16.2.1 network-instance default
+```
+
+From CEA1, try to ping CEZ1 loopback IP.
+
+```srl
+ping -c 3 172.16.2.1 network-instance default
+```
+
+Ping should fail because PE1 VRF RED does not have a route to reach CEZ2 loopback IP which is on VRF BLUE.
+
+
+## Verifying VRF connectivity with remote endpoints
+
+Now that both PEs are adversting
+
 
