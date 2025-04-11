@@ -18,7 +18,7 @@ The Harbor registry offers a neat Web UI to browse the registry contents, manage
 
 [https://registry.wrkshpz.net](https://registry.wrkshpz.net/)
 
-using the `user` user and the password `n93ClabW$`.
+using the `user` user and the password `wk415Clab$`.
 
 Managing the harbor registry is out of the scope of this workshop.
 
@@ -36,7 +36,7 @@ docker login registry.wrkshpz.net
 
 ```
 # username: user
-# password: n93ClabW$
+# password: wk415Clab$
 ```
 
 ### 2 Listing local images
