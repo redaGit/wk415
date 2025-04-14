@@ -8,7 +8,7 @@ topology:
     nokia_sros:
       image: vrnetlab/nokia_sros:24.7.R1
       type: sr-1
-      license: /home/sajusal/license-sros25.txt
+      license: /home/user/sros-24.lic
     nokia_srlinux:
       image: ghcr.io/nokia/srlinux:25.3.1
       type: ixrd2l
@@ -16,12 +16,12 @@ topology:
     pe1:
       kind: nokia_srlinux
       type: ixrx1b
-      license: /home/sajusal/license-srlinux25.txt
+      license: /home/user/srlinux-24.lic
       startup-config: startup/pe1-startup-config.txt
     pe2:
       kind: nokia_srlinux
       type: ixrx1b
-      license: /home/sajusal/license-srlinux25.txt
+      license: /home/user/srlinux-24.lic
       startup-config: startup/pe2-startup-config.txt
     p1:
       startup-config: startup/p1-startup-config.txt
