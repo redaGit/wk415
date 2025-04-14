@@ -30,16 +30,16 @@ Containerlab will deploy the lab and display a table with the list of nodes and 
 │      │ ghcr.io/nokia/srlinux:25.3.1 │         │ 3fff:172:20:20::5 │
 ├──────┼──────────────────────────────┼─────────┼───────────────────┤
 │ p1   │ nokia_sros                   │ running │ 172.20.20.2       │
-│      │ vrnetlab/nokia_sros:25.3.R1  │         │ 3fff:172:20:20::2 │
+│      │ vrnetlab/nokia_sros:24.7.R1  │         │ 3fff:172:20:20::2 │
 ├──────┼──────────────────────────────┼─────────┼───────────────────┤
 │ p2   │ nokia_sros                   │ running │ 172.20.20.4       │
-│      │ vrnetlab/nokia_sros:25.3.R1  │         │ 3fff:172:20:20::4 │
+│      │ vrnetlab/nokia_sros:24.7.R1  │         │ 3fff:172:20:20::4 │
 ├──────┼──────────────────────────────┼─────────┼───────────────────┤
 │ p3   │ nokia_sros                   │ running │ 172.20.20.8       │
-│      │ vrnetlab/nokia_sros:25.3.R1  │         │ 3fff:172:20:20::8 │
+│      │ vrnetlab/nokia_sros:24.7.R1  │         │ 3fff:172:20:20::8 │
 ├──────┼──────────────────────────────┼─────────┼───────────────────┤
 │ p4   │ nokia_sros                   │ running │ 172.20.20.9       │
-│      │ vrnetlab/nokia_sros:25.3.R1  │         │ 3fff:172:20:20::9 │
+│      │ vrnetlab/nokia_sros:24.7.R1  │         │ 3fff:172:20:20::9 │
 ├──────┼──────────────────────────────┼─────────┼───────────────────┤
 │ pe1  │ nokia_srlinux                │ running │ 172.20.20.11      │
 │      │ ghcr.io/nokia/srlinux:25.3.1 │         │ 3fff:172:20:20::b │
