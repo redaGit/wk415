@@ -116,24 +116,22 @@ The management interface configuration can be seen in OC format. The other inter
 Exit from SR Linux and on your VM, run the following commands to push the configuration in the files to the devices. There is no native configuration for spine as all required configs are covered in Openconfig.
 
 ```
-gnmic -a 
+gnmic -a pe1:57401 -u admin -p NokiaSrl1! --insecure set --update-path openconfig:/ --update-file oc/pe1-interface.json --encoding=JSON_IETF
+
+gnmic -a pe2:57401 -u admin -p NokiaSrl1! --insecure set --update-path openconfig:/ --update-file oc/pe2-interface.json --encoding=JSON_IETF
 ```
 
 Expected response from each device:
 
 ```
 {
-  "source": "leaf1:57401",
-  "timestamp": 1740857162969095065,
-  "time": "2025-03-01T21:26:02.969095065+02:00",
+  "source": "pe1:57401",
+  "timestamp": 1744653067320519416,
+  "time": "2025-04-14T13:51:07.320519416-04:00",
   "results": [
     {
       "operation": "UPDATE",
       "path": "openconfig:"
-    },
-    {
-      "operation": "UPDATE",
-      "path": "srl_nokia:"
     }
   ]
 }
