@@ -8,7 +8,7 @@ To deploy the lab, run the following:
 
 ```bash
 cd ~/cwrk/ipvpn
-sudo clab deploy -t vm.clab.yml
+sudo clab deploy -t ip-vpn.clab.yml
 ```
 
 Containerlab will deploy the lab and display a table with the list of nodes and their IPs.
