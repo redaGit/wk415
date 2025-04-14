@@ -1,0 +1,58 @@
+name: ipvpn
+ 
+prefix: ""
+topology:
+  defaults:
+    kind: nokia_sros
+  kinds:
+    nokia_sros:
+      image: vrnetlab/nokia_sros:24.7.R1
+      type: sr-1
+      license: /home/sajusal/license-sros25.txt
+    nokia_srlinux:
+      image: ghcr.io/nokia/srlinux:25.3.1
+      type: ixrd2l
+  nodes:
+    pe1:
+      kind: nokia_srlinux
+      type: ixrx1b
+      license: /home/sajusal/license-srlinux25.txt
+      startup-config: startup/pe1-startup-config.txt
+    pe2:
+      kind: nokia_srlinux
+      type: ixrx1b
+      license: /home/sajusal/license-srlinux25.txt
+      startup-config: startup/pe2-startup-config.txt
+    p1:
+      startup-config: startup/p1-startup-config.txt
+    p2:
+      startup-config: startup/p2-startup-config.txt
+    p3:
+      startup-config: startup/p3-startup-config.txt
+    p4:
+      startup-config: startup/p4-startup-config.txt
+    cea1:
+      kind: nokia_srlinux
+      startup-config: startup/cea1-startup-config.txt
+    cea2:
+      kind: nokia_srlinux
+      startup-config: startup/cea2-startup-config.txt
+    cez1:
+      kind: nokia_srlinux
+      startup-config: startup/cez1-startup-config.txt
+    cez2:
+      kind: nokia_srlinux
+      startup-config: startup/cez2-startup-config.txt
+  links:
+    - endpoints: ["pe1:e1-1", "p1:eth1"]
+    - endpoints: ["pe1:e1-2", "p2:eth2"]
+    - endpoints: ["p1:eth4", "p2:eth4"]
+    - endpoints: ["p1:eth3", "p3:eth3"]
+    - endpoints: ["p2:eth3", "p4:eth3"]
+    - endpoints: ["p3:eth4", "p4:eth4"]
+    - endpoints: ["pe2:e1-1", "p3:eth1"]
+    - endpoints: ["pe2:e1-2", "p4:eth2"]
+    - endpoints: ["cea1:e1-1","pe1:e1-10"]
+    - endpoints: ["cez1:e1-1","pe1:e1-11"]
+    - endpoints: ["cea2:e1-1","pe2:e1-10"]
+    - endpoints: ["cez2:e1-1","pe2:e1-11"]
