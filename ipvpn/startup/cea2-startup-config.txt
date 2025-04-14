@@ -1,0 +1,22 @@
+set / routing-policy prefix-set loopbacks prefix 0.0.0.0/0 mask-length-range 32..32
+set / routing-policy policy export-lb statement lb-1 match protocol local
+set / routing-policy policy export-lb statement lb-1 match prefix prefix-set loopbacks
+set / routing-policy policy export-lb statement lb-1 action policy-result accept
+set / routing-policy policy import-all statement all action policy-result accept
+set / interface ethernet-1/1 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 address 10.1.1.5/31
+set / interface lo1 subinterface 0 ipv4 admin-state enable
+set / interface lo1 subinterface 0 ipv4 address 192.168.2.1/32
+set / system management openconfig admin-state enable
+set / network-instance default type default
+set / network-instance default interface ethernet-1/1.0
+set / network-instance default interface lo1.0
+set / network-instance default protocols bgp admin-state enable
+set / network-instance default protocols bgp autonomous-system 64501
+set / network-instance default protocols bgp router-id 10.10.10.11
+set / network-instance default protocols bgp export-policy [ export-lb ]
+set / network-instance default protocols bgp afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp group PE peer-as 64555
+set / network-instance default protocols bgp group PE import-policy [ import-all ]
+set / network-instance default protocols bgp neighbor 10.1.1.4 peer-group PE
