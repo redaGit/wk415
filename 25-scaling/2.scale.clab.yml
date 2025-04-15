@@ -14,7 +14,7 @@ topology:
     ceos2:
       kind: arista_ceos
       image: ceos:4.33.0F
-      startup-config: config/ceos1.cfg
+      startup-config: config/ceos2.cfg
       mgmt-ipv4: 172.80.80.21
     br-clab:
       kind: bridge
