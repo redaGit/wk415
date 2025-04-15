@@ -19,7 +19,7 @@ The automation script adds the `docker` group to your `user`, in order for these
 After logout and login again, check that docker is installed and running:
 
 ```bash
-docker run --rm hello-world
+sudo docker run --rm hello-world
 ```
 
 Expected output: `Hello from Docker!`
