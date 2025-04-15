@@ -11,7 +11,7 @@ In this section, we will explore the Linux bridge interface option using 2 labs 
 
 ## Lab Topology
 
-![image](../images/scaling-topology.jpg)
+![image](../images/scaling-topology-ceos.jpg)
 
 `scaling-lab-1` has a SR Linux node and cEOS node.
 
