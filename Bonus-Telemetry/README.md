@@ -28,7 +28,7 @@ The streaming telemetry lab' [topology file](https://github.com/srl-labs/srl-tel
 ## Start Grafana 
 
 Using your laptop browser
-- http://<id>.wrkshpz.net:3000
+- http://"id".wrkshpz.net:3000
 - Dashboards
 - Network Telemetry
 
