@@ -46,19 +46,19 @@ topology:
 Check what images are available on the system:
 
 ```bash
-docker images
+sudo docker images
 ```
 
 Pull SR Linux container image available for free:
 
 ```bash
-docker pull ghcr.io/nokia/srlinux
+sudo docker pull ghcr.io/nokia/srlinux
 ```
 
 Import cEOS image located stored on your VM and pay attention to the 2nd argument for the `docker import` command where you have to specify the image:
 
 ```bash
-docker import ~/images/cEOS64-lab-4.33.0F.tar ceos:4.33.0F
+sudo docker import ~/images/cEOS64-lab-4.33.0F.tar ceos:4.33.0F
 ```
 
 Expected output:
@@ -70,7 +70,7 @@ sha256:f4c604a5da646b0b1fa5a895086465472aa1f25c386ebc8aa2e6e72de277e618
 Check the local image store again:
 
 ```bash
-docker images
+sudo docker images
 ```
 
 Expected output:
