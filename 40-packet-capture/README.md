@@ -114,7 +114,7 @@ unzip packetflix-handler.zip && \
 sudo mv packetflix-handler.app /Applications
 ```
 
-To install the extpcap wireshark plugin execute in the Mac terminal:
+To install the extcap wireshark plugin execute in the Mac terminal:
 
 ```bash
 # for x86_64 MacOS use https://github.com/siemens/cshargextcap/releases/download/v0.10.7/cshargextcap_0.10.7_darwin_amd64.tar.gz
