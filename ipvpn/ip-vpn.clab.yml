@@ -18,11 +18,15 @@ topology:
       type: ixrx1b
       license: /home/user/srlinux-25.lic
       startup-config: startup/pe1-startup-config.txt
+      binds:
+        - startup/custom.py:/etc/opt/srlinux/cli/plugins/custom.py
     pe2:
       kind: nokia_srlinux
       type: ixrx1b
       license: /home/user/srlinux-25.lic
       startup-config: startup/pe2-startup-config.txt
+      binds:
+        - startup/custom.py:/etc/opt/srlinux/cli/plugins/custom.py
     p1:
       startup-config: startup/p1-startup-config.txt
     p2:
