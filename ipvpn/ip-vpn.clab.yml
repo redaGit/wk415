@@ -8,7 +8,7 @@ topology:
     nokia_sros:
       image: vrnetlab/nokia_sros:24.7.R1
       type: sr-1
-      license: /home/user/sros-24.lic
+      license: /home/nokiauser/images/sros-24.lic
     nokia_srlinux:
       image: ghcr.io/nokia/srlinux:25.3.1
       type: ixrd2l
@@ -16,14 +16,14 @@ topology:
     pe1:
       kind: nokia_srlinux
       type: ixrx1b
-      license: /home/user/srlinux-25.lic
+      license: /home/nokiauser/images/srlinux-25.lic
       startup-config: startup/pe1-startup-config.txt
       binds:
         - startup/custom.py:/etc/opt/srlinux/cli/plugins/custom.py
     pe2:
       kind: nokia_srlinux
       type: ixrx1b
-      license: /home/user/srlinux-25.lic
+      license: /home/nokiauser/images/srlinux-25.lic
       startup-config: startup/pe2-startup-config.txt
       binds:
         - startup/custom.py:/etc/opt/srlinux/cli/plugins/custom.py
