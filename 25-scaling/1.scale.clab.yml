@@ -6,7 +6,7 @@ mgmt:
   ipv4-subnet: 172.80.80.0/24
 topology:
   nodes:
-    srl:
+    srl1:
       kind: nokia_srlinux
       image: ghcr.io/nokia/srlinux
       mgmt-ipv4: 172.80.80.10
@@ -20,5 +20,5 @@ topology:
       kind: bridge
 
   links:
-    - endpoints: ["ceos1:eth1", "srl:e1-1"]
+    - endpoints: ["ceos1:eth1", "srl1:e1-1"]
     - endpoints: ["ceos1:eth2", "br-clab:eth1"]
