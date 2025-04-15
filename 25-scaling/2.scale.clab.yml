@@ -21,4 +21,4 @@ topology:
 
   links:
     - endpoints: ["ceos2:eth1", "srl:e1-1"]
-    - endpoints: ["ceos2:eth2", "br-clab:eth1"]
+    - endpoints: ["ceos2:eth2", "br-clab:eth2"]
