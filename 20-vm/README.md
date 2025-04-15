@@ -64,7 +64,7 @@ Here's the topology.
 First, let's switch back to the lab directory:
 
 ```bash
-cd ~/cwrk/20-vm
+cd ~/wk415/20-vm
 ```
 
 Now lets deploy the lab:
@@ -149,6 +149,6 @@ We have now completed the section on bring VM based nodes into Containerlab.
 You may destroy the lab using:
 
 ```bash
-sudo clab des -t ~/cwrk/20-vm/vm.clab.yml
+sudo clab des -t ~/wk415/20-vm/vm.clab.yml
 ```
 
