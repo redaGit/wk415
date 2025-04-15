@@ -7,7 +7,7 @@
 To deploy the lab, run the following:
 
 ```bash
-cd ~/cwrk/ipvpn
+cd ~/wk415/ipvpn
 sudo clab deploy -t ip-vpn.clab.yml
 ```
 
