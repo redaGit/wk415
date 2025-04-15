@@ -513,6 +513,12 @@ set / network-instance vrf-blue protocols bgp-vpn bgp-instance 1 export-policy [
 set / network-instance vrf-blue protocols bgp-vpn bgp-instance 1 import-policy [ vrf-common-import ]
 ```
 
+Now check the received route on PE1. It will come with 2 route targets.
+
+```srl
+show network-instance default protocols bgp routes l3vpn-ipv4-unicast prefix 172.16.2.1/32 detail
+```
+
 ### Verify route table
 
 Verify both VRF route table to confirm that the other VRF routes are now reachable.
