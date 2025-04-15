@@ -13,7 +13,7 @@ Both leafs and Spine nodes will be running the latest Nokia [SR Linux](https://w
 To deploy the lab, run the following:
 
 ```bash
-cd ~/cwrk/evpn
+cd ~/wk415/evpn
 sudo clab deploy -t srl-evpn.clab.yml
 ```
 
