@@ -37,7 +37,7 @@ sudo ip link set br-clab up
 Deploy the first lab.
 
 ```bash
-cd ~/wk320/25-scaling
+cd ~/wk415/25-scaling
 clab dep -t 1.scale.clab.yml
 ```
 
