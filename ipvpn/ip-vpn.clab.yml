@@ -6,7 +6,7 @@ topology:
     kind: nokia_sros
   kinds:
     nokia_sros:
-      image: vrnetlab/nokia_sros:24.7.R1
+      image: 34.147.135.20/library/nokia_sros:24.7.R1
       type: sr-1
       license: /home/nokiauser/images/sros-24.lic
     nokia_srlinux:
