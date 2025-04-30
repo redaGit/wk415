@@ -186,6 +186,7 @@ If the topology file is located in a different directory, you can specify the pa
 
 ```bash
 sudo clab inspect -t ~/wk415/10-basics/
+```
 12:15:59 INFO Parsing & checking topology file=basic.clab.yml
 ╭─────────────────┬───────────────────────┬─────────┬───────────────────╮
 │       Name      │       Kind/Image      │  State  │   IPv4/6 Address  │
@@ -196,7 +197,7 @@ sudo clab inspect -t ~/wk415/10-basics/
 │ clab-basic-srl  │ nokia_srlinux         │ running │ 172.20.20.3       │
 │                 │ ghcr.io/nokia/srlinux │         │ 3fff:172:20:20::3 │
 ╰─────────────────┴───────────────────────┴─────────┴───────────────────╯
-```
+
 
 You can also list all running labs regardless of where their topology files are located:
 
