@@ -1,4 +1,4 @@
-# Welcome to the Containerlab & EVPN Workshop 
+# Welcome to the Containerlab & IPVPN Workshop 
 
 This README is your starting point into the hands on section.
 
