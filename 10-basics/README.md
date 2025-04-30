@@ -14,7 +14,7 @@ cd ~ && git clone https://github.com/redaGit/wk415.git \
 The repo should be cloned and you should be in the `wk415` directory as per the output below:
 
 ```
-nokiauser@2:~/wk415/10-basics$ 
+nokiauser@2: cd ~/wk415/10-basics$ 
 ```
 
 ## Topology
