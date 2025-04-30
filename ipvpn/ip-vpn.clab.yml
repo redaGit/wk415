@@ -20,8 +20,6 @@ topology:
       startup-config: startup/pe1-startup-config.txt
       binds:
         - startup/custom.py:/etc/opt/srlinux/cli/plugins/custom.py
-        - startup/custom2.py:/etc/opt/srlinux/cli/plugins/custom2.py
-        - startup/report.py:/etc/opt/srlinux/cli/ip/ip_bgp_report.py
     pe2:
       kind: nokia_srlinux
       type: ixrx1b
