@@ -132,7 +132,7 @@ ghcr.io/nokia/srlinux                                 latest    eb2a823cd8ce   4
 Destroy the previous VM lab:
 
 ```bash
-cd ~/n93-clab/20-vm && sudo clab des
+cd ~/wk415/20-vm && sudo clab des
 ```
 
 Delete the sros docker image (replace with the correct Image ID in your VM):
@@ -165,7 +165,7 @@ topology:
 Deploy the lab using:
 
 ```bash
-cd ~/n93-clab/20-vm
+cd ~/wk415/20-vm
 sudo clab dep -t vm.clab.yml
 ```
 
@@ -185,7 +185,7 @@ After the lab is deployed, check ping between client1 and client2 similar to wha
 Destroy the lab using:
 
 ```bash
-cd ~/n93-clab/20-vm && sudo clab des
+cd ~/wk415/20-vm && sudo clab des
 ```
 
 Not only this gives us an easy way to share images with others, but also it enables stronger reproducibility of the lab, as the users of our lab would use exactly the same image that we built.
