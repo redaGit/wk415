@@ -16,7 +16,7 @@ The registry has been already deployed in the workshop environment, but it is qu
 
 The Harbor registry offers a neat Web UI to browse the registry contents, manage users and tune access control. You can log in to the registry UI like this:
 
-[http://registry.wrkshpz.net](http://registry.wrkshpz.net/)
+[http://34.147.135.20](http://34.147.135.20/)
 
 using the `user` user and the password `wk415Clab$`.
 
@@ -31,7 +31,7 @@ Managing the harbor registry is out of the scope of this workshop.
 To be able to push and pull the images from the workshop's registry, you need to login to the registry from your VM.
 
 ```bash
-docker login registry.wrkshpz.net
+docker login 34.147.135.20
 ```
 
 ```
@@ -72,19 +72,19 @@ Now that we know the name of the image that we want to push to the registry, we 
 We will use `docker push` to upload the image to the registry. Before this, let's tag the image with the name of the registry and a tag.
 
 ```bash
-docker tag vrnetlab/nokia_sros:24.7.R1 registry.wrkshpz.net/library/nokia_sros:24.7.R1
+docker tag vrnetlab/nokia_sros:24.7.R1 34.147.135.20/library/nokia_sros:24.7.R1
 ```
 
 Now we can push the image to the registry.
 
 ```bash
-docker push registry.wrkshpz.net/library/nokia_sros:24.7.R1
+docker push 34.147.135.20/library/nokia_sros:24.7.R1
 ```
 
 Expected output - Note: The user `user` does not have permission to push to the registry and will receive a `permission denied` error.
 
 ```bash
-The push refers to repository [registry.wrkshpz.net/library/nokia_sros]
+The push refers to repository [34.147.135.20/library/nokia_sros]
 30fe1646bed3: Preparing 
 a1004ec9baf5: Preparing 
 0a58c259d433: Preparing 
@@ -95,7 +95,7 @@ unauthorized: unauthorized to access repository: library/nokia_sros, action: pus
 The below output is for a user with permission to push.
 
 ```bash
-The push refers to repository [https://registry.wrkshpz.net/library/nokia_sros]
+The push refers to repository [https://34.147.135.20/library/nokia_sros]
 626d14695d27: Pushed 
 da133bfdd77f: Pushed 
 2e873d5d18ac: Pushed 
@@ -125,7 +125,7 @@ user@1:~$ docker images
 REPOSITORY                                            TAG       IMAGE ID       CREATED          SIZE
 xrd                                                   7.8.1     1bfb061eca9e   49 minutes ago   1.18GB
 vrnetlab/nokia_sros                                   24.7.R1   553e94475c12   38 hours ago     889MB
-registry.wrkshpz.net/library/nokia_sros          24.7.R1   553e94475c12   38 hours ago     889MB
+34.147.135.20/library/nokia_sros          24.7.R1   553e94475c12   38 hours ago     889MB
 ghcr.io/nokia/srlinux                                 latest    eb2a823cd8ce   4 weeks ago      2.35GB
 ```
 
@@ -155,7 +155,7 @@ topology:
   kinds:
     nokia_sros:
 -     image: vrnetlab/nokia_sros:24.7.R1
-+     image: registry.wrkshpz.net/library/nokia_sros:24.7.R1
++     image: 34.147.135.20/library/nokia_sros:24.7.R1
       type: sr-1
       license: /home/user/images/sros-24.lic
     linux:
@@ -175,8 +175,8 @@ Expected output (showing docker pulling image from registry):
 INFO[0000] Containerlab v0.60.1 started                 
 INFO[0000] Parsing & checking topology file: vm.clab.yml 
 INFO[0000] Creating docker network: Name="clab", IPv4Subnet="172.20.20.0/24", IPv6Subnet="3fff:172:20:20::/64", MTU=1500 
-INFO[0000] Pulling registry.wrkshpz.net/library/nokia_sros:24.7.R1 Docker image 
-INFO[0006] Done pulling registry.wrkshpz.net/library/nokia_sros:24.7.R1
+INFO[0000] Pulling 34.147.135.20/library/nokia_sros:24.7.R1 Docker image 
+INFO[0006] Done pulling 34.147.135.20/library/nokia_sros:24.7.R1
 <snip>
 ```
 
