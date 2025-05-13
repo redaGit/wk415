@@ -188,4 +188,10 @@ Destroy the lab using:
 cd ~/wk415/20-vm && sudo clab des
 ```
 
+Rename the SR OS docker image to the original name for use in later sections.
+
+```bash
+docker tag {image-id} vrnetlab/nokia_sros:24.7.R1
+```
+
 Not only this gives us an easy way to share images with others, but also it enables stronger reproducibility of the lab, as the users of our lab would use exactly the same image that we built.
