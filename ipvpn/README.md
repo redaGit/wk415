@@ -61,6 +61,7 @@ Find the nodename or IP address of the device from the above output and then use
 
 ```bash
 ssh pe1
+```
 
 ## Pre-configuration
 
